@@ -5,4 +5,5 @@
 void test();
 void testChoicesElement();
 void testSequentialElement();
+void testCommandProcessing();
 CommandContext parse(CommandElement &element, std::string command);

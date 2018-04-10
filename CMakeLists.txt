@@ -8,6 +8,9 @@ add_executable(
 
         command/Command.h command/Command.cpp
         command/CommandContext.h command/CommandContext.cpp
+        command/CommandException.h command/CommandException.cpp
+        command/registry/CommandManager.h command/registry/CommandManager.cpp
+        command/registry/Mapping.h command/registry/Mapping.cpp
         command/argument/ParseException.h command/argument/ParseException.cpp
         command/argument/ParsingContext.h command/argument/ParsingContext.cpp
         command/element/CommandElement.h command/element/CommandElement.cpp

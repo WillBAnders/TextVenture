@@ -7,13 +7,16 @@ class Command {
 
     public:
 
-        Command(std::string usage, std::vector<CommandElement> elements) : usage(std::move(usage)), elements(std::move(elements)) {};
+        Command(std::string name, std::string usage, CommandElement * element) : name(std::move(name)), usage(std::move(usage)), element(element) {};
+        std::string getName() const;
         std::string getUsage() const;
+        const CommandElement * getElement() const;
         virtual void process(CommandContext ctx) const = 0;
 
     private:
 
+        const std::string name;
         const std::string usage;
-        std::vector<CommandElement> elements;
+        const CommandElement * element;
 
 };

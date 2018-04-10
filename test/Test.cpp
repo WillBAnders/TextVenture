@@ -7,12 +7,15 @@
 #include "../command/element/IntElement.h"
 #include "../command/element/SequentialElement.h"
 #include "../command/element/StringElement.h"
+#include "../command/Command.h"
+#include "../command/registry/CommandManager.h"
 
 using namespace std;
 
 void test() {
     testChoicesElement();
     testSequentialElement();
+    testCommandProcessing();
 }
 
 void testChoicesElement() {
@@ -39,4 +42,27 @@ CommandContext parse(CommandElement &element, string command) {
         assert(false);
     }
     return ctx;
+}
+
+class TestCommand : public Command {
+
+    public:
+
+        TestCommand(string name, string usage, CommandElement *element) : Command(std::move(name), std::move(usage), element) {};
+        void process(CommandContext ctx) const throw(CommandException) override {
+            assert(ctx.hasArg("string") && *static_cast<string *>(ctx.getArg("string")) == "string-arg");
+        }
+
+};
+
+void testCommandProcessing() {
+    CommandManager manager;
+    TestCommand command("example", "usage", {new StringElement("string")});
+    manager.addCommand(command, {"single-alias", "alias one", "alias two"});
+    try {
+        manager.process("alias one string-arg");
+    } catch (CommandException &e) {
+        cout << e.what() << endl;
+        assert(false);
+    }
 }
