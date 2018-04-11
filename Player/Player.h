@@ -1,46 +1,24 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-
-std::string locations[2] = {"Town", "Wilderness"};
-std::string town[3] = {"Square", "Market", "Gate"};
-
+#include "Map.h"
 class Player {
-    
+
     public:
-        std::string location;
-        std::string sublocation;
+        Location *location;
 
         Player();
-        void changeLocation(std::string move);
+        ~Player();
+        void changeLocation(Location *location);
 };
 
 Player::Player() {
-    
-    this->location = "Town";
-    this->sublocation = "Square";
+    this->location = new Square();
+    std::cout << location->name;
 }
 
-void Player::changeLocation(std::string move) {
+Player::~Player() {
+    //delete location;
+}
 
-    std::cout << "Move to: ";
-    std::cin >> move;
-
-    bool found = false;
+void Player::changeLocation(Location *location) {
     
-    if (this->location == "Town") {
-        
-        for (int i = 0; i < sizeof(town)/sizeof(int); i++) {
-            if (town[i] == move) {
-                found = true;
-            }
-        }
-    }
-
-    if (found == true) {
-        
-        this->sublocation = move;
-    } else {
-        std::cout << "Invalid location." << std::endl;
-    }
+    this->location = location;
 }
