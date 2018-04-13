@@ -1,16 +1,15 @@
-#ifndef MULTIOBJECTIVE_H
-#define MULTIOBJECTIVE_H
+#pragma once
 
 #include <vector>
 #include "Objective.h"
 
 class MultiObjective : public Objective
 {
+public:
+  MultiObjective();
+  void check() override;
+
 private:
   vector<Objective> objectives;
-
-public:
-  void check();
 }
 
-#endif

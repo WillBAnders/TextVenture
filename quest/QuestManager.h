@@ -1,17 +1,16 @@
-#ifndef QUESTMANAGER_H
-#define QUESTMANAGER_H
+#pragma once
 
 #include <map>
 #include "Quest.h"
 
 class QuestManager
 {
-private:
-  map<string, Quest> quests;
-
 public:
-  Quest getQuest(string name) const;
-  void check();
-}
+  QuestManager(std::map<std::string, Quest> quests);
 
-#endif
+  Quest getQuest(std::string name) const;
+  void check();
+
+private:
+  std::map<std::string, Quest> quests;
+};

@@ -1,24 +1,23 @@
-#ifndef QUEST_H
-#define QUEST_H
+#pragma once
 
 #include <vector>
-#include "Objective.h"
+#include "objective/Objective.h"
 
 class Quest
 {
-private:
-  string name;
-  string description;
-  vector<Objective> prereq;
-  vector<Objective> objectives;
-
 public:
-  string getName() const;
-  string getDescription() const;
+  Quest(std::string name, std::string description, std::vector<Objective> prereq, std::vector<Objective> objectives);
+
+  std::string getName() const;
+  std::string getDescription() const;
 
   void offer();
   void start();
   void check();
-}
 
-#endif
+private:
+  std::string name;
+  std::string description;
+  std::vector<Objective> prereq;
+  std::vector<Objective> objectives;
+};

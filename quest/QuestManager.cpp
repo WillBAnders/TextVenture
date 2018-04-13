@@ -2,17 +2,18 @@
 #include "QuestManager.h"
 #include "Quest.h"
 
-Quest QuestManager::getQuest(string name)
+QuestManager::QuestManager(std::map<std::string, Quest> quests)
 {
-  // Define an iterator for our map
-  map<string, Quest>::iterator it;
+  this->quests = quests;
+}
 
+Quest QuestManager::getQuest(std::string name) const
+{
   // The iterator will default to the end of the map
   // if the quest isn't found. This allows for proper
   // error handling of unfound quests
-  it = this->quests.find(name);
-  if (it != it.end()) {
-    return return this->quests.find(name)->second;
+  if (quests.count(name) > 0) {
+    return this->quests.find(name)->second;
   }
   else {
     throw "Quest not found";
