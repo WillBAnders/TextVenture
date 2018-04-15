@@ -1,3 +1,4 @@
+enum Cardinal {NORTH, EAST, SOUTH, WEST};
 class Area {
     
     private:
@@ -20,8 +21,15 @@ class Location {
         std::string name;
         std::string message;
         Area *area;
+        std::map <Cardinal, Location*> neighbors;
 
     public:
+        virtual void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }
         virtual std::string getName() {
             return name;
         }
@@ -30,6 +38,9 @@ class Location {
         }
         virtual std::string getMessage() {
             return message;
+        }
+        virtual std::map<Cardinal, Location*> getNeighbors() {
+            return neighbors;
         }
         //std::vector<std::string> neighbors;
 };
@@ -40,9 +51,16 @@ class Square: public Location {
         std::string name;
         std::string message;
         Area *area;
+        std::map <Cardinal, Location*> neighbors;
         //std::vector<std::string> neighbors;
     public:
         Square(Area *area);
+        void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }
         std::string getName() {
             return name;
         }
@@ -51,6 +69,9 @@ class Square: public Location {
         }
         std::string getMessage() {
             return message;
+        }
+        std::map<Cardinal, Location*> getNeighbors() {
+            return neighbors;
         }
 };
 
@@ -68,9 +89,15 @@ class Market: public Location {
         std::string name;
         std::string message;
         Area *area;
-    
+        std::map <Cardinal, Location*> neighbors;
     public:
         Market(Area *area);
+        void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }        
         std::string getName() {
             return name;
         }
@@ -89,13 +116,46 @@ Market::Market(Area *area) {
     this->area = area;
 }
 
+class Tavern: public Location {
+    
+    private:
+        std::string name;
+        std::string message;
+        Area *area;
+        std::map <Cardinal, Location*> neighbors;
+    public:
+        Tavern(Area *area);
+        void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }
+        std::string getName() {
+            return name;
+        }
+        Area* getArea() {
+            return area;
+        }
+        std::string getMessage() {
+            return message;
+        }
+
+};
+
+Tavern::Tavern(Area *area) {
+    this->name = "Tavern";
+    this->message = "You are in the Tavern";
+    this->area = area;
+}
+
 class Wilderness: public Location {
     
     private:
         std::string name;
         std::string message;
         Area *area;
-        
+        std::map <Cardinal, Location*> neighbors;
     public:
         Wilderness(Area *area);
         std::string getName() {
@@ -114,3 +174,70 @@ Wilderness::Wilderness(Area *area) {
     this->message = "You are in the Wilderness";
     this->area = area;
 }
+
+class ThroneRoom: public Location {
+    
+    private:
+        std::string name;
+        std::string message;
+        Area *area;
+        std::map <Cardinal, Location*> neighbors;
+    public:
+        ThroneRoom(Area *area);
+        void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }
+        std::string getName() {
+            return name;
+        }
+        Area* getArea() {
+            return area;
+        }
+        std::string getMessage() {
+            return message;
+        }
+
+};
+
+ThroneRoom::ThroneRoom(Area *area) {
+    this->name = "Throne Room";
+    this->message = "You are in the Throne Room";
+    this->area = area;
+}
+
+class MainRoom: public Location {
+    
+    private:
+        std::string name;
+        std::string message;
+        Area *area;
+        std::map <Cardinal, Location*> neighbors;
+    public:
+        MainRoom(Area *area);
+        void declareNeighbors(Location *north, Location *east, Location *south, Location *west) {
+            neighbors[NORTH] = north;
+            neighbors[EAST] = east;
+            neighbors[SOUTH] = south;
+            neighbors[WEST] = west;
+        }        std::string getName() {
+            return name;
+        }
+        Area* getArea() {
+            return area;
+        }
+        std::string getMessage() {
+            return message;
+        }
+
+};
+
+MainRoom::MainRoom(Area *area) {
+    this->name = "Main Room";
+    this->message = "You are in the Main Room";
+    this->area = area;
+}
+
+
