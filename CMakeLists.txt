@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(
         textventure main.cpp
 
+        combat/Battler.h combat/Battler.cpp
+        combat/BattleManager.h combat/BattleManager.cpp
+        combat/Move.h combat/Move.cpp
+
         command/Command.h command/Command.cpp
         command/CommandContext.h command/CommandContext.cpp
         command/CommandException.h command/CommandException.cpp
