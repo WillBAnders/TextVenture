@@ -27,6 +27,15 @@ add_executable(
         data/inventory/Inventory.h data/inventory/Inventory.cpp
         data/inventory/Item.h data/inventory/Item.cpp
 
+        quest/Quest.h quest/Quest.cpp
+        quest/QuestManager.h quest/QuestManager.cpp
+        quest/objective/CollectObjective.h quest/objective/CollectObjective.cpp
+        quest/objective/DefeatObjective.h quest/objective/DefeatObejctive.cpp
+        quest/objective/InteractObjective.h quest/objective/InteractObjective.cpp
+        quest/objective/MultiObjective.h quest/objective/MultiObjective.cpp
+        quest/objective/Objective.h quest/objective/Objective.cpp
+        quest/objective/QuestObjective.h quest/objective/QuestObjective.cpp
+
         test/Test.h test/Test.cpp
 
         world/Area.h world/Area.cpp
