@@ -1,8 +1,10 @@
 #include "map.h"
+#include "inventory.h"
 class Player {
 
     private:
         Location *location;
+        inventory player;
 
     public:
         //Location *location;
