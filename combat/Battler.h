@@ -1,7 +1,5 @@
 # pragma once
 
-#include "BattleManager.h"
-
 class Battler {
 
     public:

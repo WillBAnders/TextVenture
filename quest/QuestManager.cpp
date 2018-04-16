@@ -14,5 +14,7 @@ void QuestManager::addQuest(Quest *quest) {
 }
 
 void QuestManager::check() {
-    // TODO
+    for (auto quest : quests) {
+        quest.second->check();
+    }
 }

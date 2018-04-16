@@ -1,9 +1,6 @@
-# pragma once
-
-#include "../command/element/CommandElement.h"
+#pragma once
 
 void test();
-void testChoicesElement();
-void testSequentialElement();
-void testCommandProcessing();
-CommandContext parse(CommandElement &element, std::string command);
+void testCommandSystem();
+void testDataSystem();
+void testWorldSystem();

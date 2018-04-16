@@ -1,6 +1,6 @@
 #include "Location.h"
 
-Area Location::getArea() const {
+Area *Location::getArea() const {
     return area;
 }
 

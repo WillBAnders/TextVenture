@@ -1,14 +1,14 @@
-#include<iostream>
-#include<vector>
-#include <algorithm>
+#pragma once
+
 #include <map>
+
 #include "Item.h"
 
 class Inventory {
 
     public:
 
-        Item *getItem(std::string name) const {};
+        Item *getItem(std::string name) const;
         void addItem(Item *item);
         //TODO: Display method for all items
 

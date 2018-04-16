@@ -3,8 +3,9 @@ project(textventure)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(
-        textventure main.cpp
+add_executable(textventure
+
+        TextVenture.h TextVenture.cpp
 
         combat/Battler.h combat/Battler.cpp
         combat/BattleManager.h combat/BattleManager.cpp

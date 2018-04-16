@@ -1,47 +1,26 @@
 #include "Test.h"
 
-#include <iostream>
 #include <cassert>
+#include <iostream>
 
-#include "../command/element/ChoicesElement.h"
-#include "../command/element/IntElement.h"
 #include "../command/element/SequentialElement.h"
-#include "../command/element/StringElement.h"
+#include "../command/element/ChoicesElement.h"
+#include "../world/Direction.h"
+#include "../command/element/IntElement.h"
 #include "../command/Command.h"
+#include "../command/CommandException.h"
 #include "../command/registry/CommandManager.h"
+#include "../data/inventory/Inventory.h"
+#include "../world/Area.h"
+#include "../world/Location.h"
+#include "../world/World.h"
 
 using namespace std;
 
 void test() {
-    testChoicesElement();
-    testSequentialElement();
-    testCommandProcessing();
-}
-
-void testChoicesElement() {
-    enum Direction {NORTH, EAST, SOUTH, WEST};
-    ChoicesElement element("direction", {{"north", new Direction(NORTH)}, {"east", new Direction(EAST)}, {"south", new Direction(SOUTH)}, {"west", new Direction(WEST)}});
-    CommandContext ctx = parse(element, "SOUTH");
-    assert(ctx.hasArg("direction") && *static_cast<Direction *>(ctx.getArg("direction")) == SOUTH);
-}
-
-void testSequentialElement() {
-    SequentialElement element("person", {new StringElement("name"), new IntElement("age", 1, 100)});
-    CommandContext ctx = parse(element, "Austin 42");
-    assert(ctx.hasArg("name") && *static_cast<string *>(ctx.getArg("name")) == "Austin");
-    assert(ctx.hasArg("age") && *static_cast<int *>(ctx.getArg("age")) == 42);
-}
-
-CommandContext parse(CommandElement &element, string command) {
-    ParsingContext args(std::move(command));
-    CommandContext ctx;
-    try {
-        element.parse(args, ctx);
-    } catch (ParseException &e) {
-        cout << "Error parsing argument: " << e.what() << endl;
-        assert(false);
-    }
-    return ctx;
+    testCommandSystem();
+    testDataSystem();
+    testWorldSystem();
 }
 
 class TestCommand : public Command {
@@ -50,19 +29,52 @@ class TestCommand : public Command {
 
         TestCommand(string name, string usage, CommandElement *element) : Command(std::move(name), std::move(usage), element) {};
         void process(CommandContext ctx) const throw(CommandException) override {
-            assert(ctx.hasArg("string") && *static_cast<string *>(ctx.getArg("string")) == "string-arg");
+            assert(ctx.hasArg("direction") && *static_cast<Direction *>(ctx.getArg("direction")) == Direction::NORTHEAST);
+            assert(ctx.hasArg("distance") && *static_cast<int *>(ctx.getArg("distance")) == 3);
         }
 
 };
 
-void testCommandProcessing() {
+const std::map<std::string, void *> directions = {
+        {"north", new Direction(NORTH)},
+        {"northeast", new Direction(NORTHEAST)},
+        {"east", new Direction(EAST)},
+        {"southeast", new Direction(SOUTHEAST)},
+        {"south", new Direction(SOUTH)},
+        {"southwest", new Direction(SOUTHWEST)},
+        {"west", new Direction(WEST)},
+        {"northwest", new Direction(NORTHWEST)}};
+
+void testCommandSystem() {
+    ChoicesElement direction("direction", directions);
+    IntElement distance("distance", 1, 5);
+    SequentialElement element("elements", {&direction, &distance});
+    TestCommand command("Example", "Usage", &element);
     CommandManager manager;
-    TestCommand command("example", "usage", {new StringElement("string")});
-    manager.addCommand(command, {"single-alias", "alias one", "alias two"});
+    manager.addCommand(command, "move");
     try {
-        manager.process("alias one string-arg");
+        manager.process("move northeast 3");
     } catch (CommandException &e) {
         cout << e.what() << endl;
         assert(false);
     }
+}
+
+void testDataSystem() {
+    Inventory inventory;
+    inventory.addItem(new Item("Name", "Description", 3));
+    assert(inventory.getItem("Name") != nullptr);
+    inventory.getItem("Name")->setQuantity(1);
+    assert(inventory.getItem("Name")->getQuantity() == 1);
+}
+
+void testWorldSystem() {
+    World world;
+    world.addArea(new Area("Area"));
+    assert(world.getArea("Area") != nullptr);
+    world.addLocation(new Location(world.getArea("Area"), "Location"));
+    assert(world.getLocation("Location") != nullptr);
+    world.addLocation(new Location(world.getArea("Area"), "Neighbor"));
+    world.getLocation("Location")->addNeighbor(Direction::EAST, world.getLocation("Neighbor"));
+    assert(world.getLocation("Location")->getNeighbor(Direction::EAST)->getName() == "Neighbor");
 }

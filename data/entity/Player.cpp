@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Location &Player::getLocation() const {
+Location Player::getLocation() const {
     return location;
 }
 
