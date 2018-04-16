@@ -24,4 +24,9 @@ add_executable(
         command/element/StringElement.h command/element/StringElement.cpp
 
         test/Test.h test/Test.cpp
+
+        world/Area.h world/Area.cpp
+        world/Direction.h
+        world/Location.h world/Location.cpp
+        world/World.h world/World.cpp
 )
