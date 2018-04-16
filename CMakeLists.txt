@@ -23,6 +23,10 @@ add_executable(
         command/element/SequentialElement.h command/element/SequentialElement.cpp
         command/element/StringElement.h command/element/StringElement.cpp
 
+        data/entity/Player.h data/entity/Player.cpp
+        data/inventory/Inventory.h data/inventory/Inventory.cpp
+        data/inventory/Item.h data/inventory/Item.cpp
+
         test/Test.h test/Test.cpp
 
         world/Area.h world/Area.cpp
