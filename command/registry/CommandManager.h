@@ -7,8 +7,8 @@ class CommandManager {
 
     public:
 
-        void addCommand(Command &command, std::string alias);
-        void addCommand(Command &command, std::vector<std::string> aliases);
+        void addCommand(Command *command, const std::string &alias);
+        void addCommand(Command *command, std::vector<std::string> aliases);
         void process(std::string input) const throw(CommandException);
 
     private:

@@ -9,12 +9,12 @@ class CollectObjective : public Objective {
 
     public:
 
-        CollectObjective(std::string description, Item item, int quantity) : Objective(std::move(description)), item(std::move(item)), quantity(quantity) {};
+        CollectObjective(std::string description, Item *item, int quantity) : Objective(std::move(description)), item(item), quantity(quantity) {};
         void check() override;
 
     private:
 
-        Item item;
+        Item *item;
         int quantity;
 
 };

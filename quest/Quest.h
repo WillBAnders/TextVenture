@@ -8,7 +8,7 @@ class Quest {
 
     public:
 
-        Quest(std::string name, std::string description, std::vector<Objective> prereqs, std::vector<Objective> objectives) : name(std::move(name)), description(std::move(description)), prereqs(std::move(prereqs)), objectives(std::move(objectives)) {};
+        Quest(std::string name, std::string description) : name(std::move(name)), description(std::move(description)) {};
         std::string getName() const;
         std::string getDescription() const;
         bool isComplete() const;
@@ -16,12 +16,15 @@ class Quest {
         void start();
         void check();
 
+    protected:
+
+        int progress;
+        std::vector<Objective> prereqs = std::vector<Objective>();
+        std::vector<Objective> objectives = std::vector<Objective>();
+
     private:
 
         std::string name;
         std::string description;
-        std::vector<Objective> prereqs;
-        std::vector<Objective> objectives;
-        int progress;
 
 };

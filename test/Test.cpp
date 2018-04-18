@@ -2,7 +2,7 @@
 
 #include <cassert>
 #include <iostream>
-
+#include <utility>
 #include "../command/element/SequentialElement.h"
 #include "../command/element/ChoicesElement.h"
 #include "../world/Direction.h"
@@ -51,7 +51,7 @@ void testCommandSystem() {
     SequentialElement element("elements", {&direction, &distance});
     TestCommand command("Example", "Usage", &element);
     CommandManager manager;
-    manager.addCommand(command, "move");
+    manager.addCommand(&command, "move");
     try {
         manager.process("move northeast 3");
     } catch (CommandException &e) {
@@ -60,12 +60,25 @@ void testCommandSystem() {
     }
 }
 
+class TestItem : public Item {
+
+    public:
+
+        TestItem(std::string name, std::string description) : Item(std::move(name), std::move(description)) {};
+        void use() override {
+            setQuantity(getQuantity() - 1);
+        }
+
+};
+
 void testDataSystem() {
     Inventory inventory;
-    inventory.addItem(new Item("Name", "Description", 3));
+    inventory.addItem(new TestItem("Name", "Description"));
     assert(inventory.getItem("Name") != nullptr);
-    inventory.getItem("Name")->setQuantity(1);
-    assert(inventory.getItem("Name")->getQuantity() == 1);
+    inventory.getItem("Name")->setQuantity(4);
+    assert(inventory.getItem("Name")->getQuantity() == 4);
+    inventory.getItem("Name")->use();
+    assert(inventory.getItem("Name")->getQuantity() == 3);
 }
 
 void testWorldSystem() {

@@ -28,11 +28,18 @@ add_executable(textventure
         data/inventory/Inventory.h data/inventory/Inventory.cpp
         data/inventory/Item.h data/inventory/Item.cpp
 
+        game/Game.h game/Game.cpp
+        game/commands/Move.h game/commands/Move.cpp
+        game/items/HealthPotion.h game/items/HealthPotion.cpp
+        game/locations/TownSquare.h game/locations/TownSquare.cpp
+        game/quests/IntoTheWild.h game/quests/IntoTheWild.cpp
+
         quest/Quest.h quest/Quest.cpp
         quest/QuestManager.h quest/QuestManager.cpp
         quest/objective/CollectObjective.h quest/objective/CollectObjective.cpp
         quest/objective/DefeatObjective.h quest/objective/DefeatObejctive.cpp
         quest/objective/InteractObjective.h quest/objective/InteractObjective.cpp
+        quest/objective/LocationObjective.h quest/objective/LocationObjective.cpp
         quest/objective/MultiObjective.h quest/objective/MultiObjective.cpp
         quest/objective/Objective.h quest/objective/Objective.cpp
         quest/objective/QuestObjective.h quest/objective/QuestObjective.cpp
