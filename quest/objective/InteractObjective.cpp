@@ -1,5 +1,6 @@
 #include "InteractObjective.h"
 
-void InteractObjective::check() {
-    // TODO
+void InteractObjective::check()
+{
+  // TODO
 }
