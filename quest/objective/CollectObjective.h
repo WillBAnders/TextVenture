@@ -2,20 +2,13 @@
 
 #include "Objective.h"
 
-#include <utility>
-#include "../../data/inventory/Item.h"
+class CollectObjective : public Objective
+{
+public:
+  CollectObjective();
+  void check() override;
 
-class CollectObjective : public Objective {
-
-    public:
-
-        CollectObjective(std::string description, Item item, int quantity) : Objective(std::move(description)), item(std::move(item)), quantity(quantity) {};
-        void check() override;
-
-    private:
-
-        Item item;
-        int quantity;
-
+private:
+  std::string item; // TODO: Reimplement as a todo type instead of std::string
+  int quantity;
 };
-

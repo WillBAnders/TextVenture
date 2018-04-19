@@ -1,5 +1,6 @@
 #include "DefeatObjective.h"
 
-void DefeatObjective::check() {
-    // TODO
+void DefeatObjective::check()
+{
+  // TODO
 }

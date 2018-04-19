@@ -1,17 +1,16 @@
 #pragma once
-
 #include <string>
 
-class Objective {
+class Objective
+{
+public:
+  Objective() {};
+  virtual ~Objective() {};
+  virtual void check() = 0;
+  virtual std::string getTitle() = 0;
+  virtual std::string getDescription() = 0;
 
-    public:
-
-        explicit Objective(std::string description) : description(std::move(description)) {};
-        std::string getDescription() const;
-        virtual void check() = 0;
-
-    private:
-
-        std::string description;
-
+protected:
+  std::string title;
+  std::string description;
 };

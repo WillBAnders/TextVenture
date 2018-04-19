@@ -2,15 +2,13 @@
 
 #include "Objective.h"
 
-class InteractObjective : public Objective {
+class InteractObjective : public Objective
+{
+public:
+  InteractObjective();
+  void check() override;
 
-    public:
-
-        InteractObjective(const std::string &description, std::string object) : Objective(std::move(description)), object(std::move(object)) {};
-        void check() override;
-
-    private:
-
-        std::string object; // TODO: Reimplement as Interactable type
-
+private:
+  std::string object; // TODO: Reimplement as Interactable type
 };
+

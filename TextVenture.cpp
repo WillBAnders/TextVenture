@@ -2,6 +2,7 @@
 
 #include "test/Test.h"
 
-int main() {
-    test();
+int main()
+{
+  test();
 }

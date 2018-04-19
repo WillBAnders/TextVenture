@@ -1,18 +1,16 @@
 #pragma once
 
 #include <map>
-
 #include "Quest.h"
 
-class QuestManager {
+class QuestManager
+{
+public:
+  QuestManager(std::map<std::string, Quest> quests);
 
-    public:
+  Quest getQuest(std::string name) const;
+  void check();
 
-        Quest *getQuest(std::string name) const;
-        void addQuest(Quest *quest);
-        void check();
-
-    private:
-
-        std::map<std::string, Quest *> quests;
+private:
+  std::map<std::string, Quest> quests;
 };
