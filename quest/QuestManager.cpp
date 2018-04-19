@@ -2,9 +2,8 @@
 #include "QuestManager.h"
 #include "Quest.h"
 
-QuestManager::QuestManager(std::map<std::string, Quest> quests)
+QuestManager::QuestManager()
 {
-  this->quests = quests;
 }
 
 Quest QuestManager::getQuest(std::string name) const

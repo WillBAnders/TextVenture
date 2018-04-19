@@ -3,6 +3,7 @@
 #include <cassert>
 #include <iostream>
 #include <utility>
+#include <vector>
 #include "../command/element/SequentialElement.h"
 #include "../command/element/ChoicesElement.h"
 #include "../world/Compass.h"
@@ -14,6 +15,8 @@
 #include "../world/Area.h"
 #include "../world/Location.h"
 #include "../world/World.h"
+#include "../quest/Quest.h"
+#include "../quest/objective/Objective.h"
 
 using namespace std;
 
@@ -21,6 +24,7 @@ void test() {
     testCommandSystem();
     testDataSystem();
     testWorldSystem();
+    testQuestSystem();
 }
 
 class TestCommand : public Command {
@@ -80,4 +84,16 @@ void testWorldSystem() {
     world.addLocation(new Location(world.getArea("Area"), "Neighbor"));
     world.getLocation("Location")->addNeighbor(Compass::EAST, world.getLocation("Neighbor"));
     assert(world.getLocation("Location")->getNeighbor(Compass::EAST)->getName() == "Neighbor");
+}
+
+void testQuestSystem() {
+  // Generate Empty objective lists
+  vector<Objective*> pre = {};
+  vector<Objective*> obs = {};
+
+  // Create a main quest instance
+  Quest *q = new Quest("Test Quest", "This is a test quest", pre, obs, false);
+
+  // Offer the quest
+  q->offer();
 }

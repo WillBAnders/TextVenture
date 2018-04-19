@@ -43,7 +43,6 @@ add_executable(textventure
         quest/objective/CollectObjective.h quest/objective/CollectObjective.cpp
         quest/objective/DefeatObjective.h quest/objective/DefeatObejctive.cpp
         quest/objective/InteractObjective.h quest/objective/InteractObjective.cpp
-        quest/objective/LocationObjective.h quest/objective/LocationObjective.cpp
         quest/objective/MultiObjective.h quest/objective/MultiObjective.cpp
         quest/objective/Objective.h
 

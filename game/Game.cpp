@@ -13,7 +13,7 @@ Game::Game() {
     commands.addCommand(new HelpCommand(), "help");
     commands.addCommand(new MoveCommand(), (std::vector<std::string>) {"move", "go"});
     commands.addCommand(new SearchCommand(), (std::vector<std::string>) {"search", "explore"});
-    quests.addQuest(new IntoTheWild());
+    // quests.addQuest(new IntoTheWild());
 }
 
 Player &Game::getPlayer() {

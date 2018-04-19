@@ -6,7 +6,7 @@
 class QuestManager
 {
 public:
-  QuestManager(std::map<std::string, Quest> quests);
+  QuestManager();
 
   Quest getQuest(std::string name) const;
   void check();
