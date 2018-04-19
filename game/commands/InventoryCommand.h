@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../../command/Command.h"
-#include "../../command/CommandException.h"
+#include "Elements.h"
 
-class Move : public Command {
+class InventoryCommand : public Command {
 
     public:
 
-        Move() : Command("Move", "<direction>", {}) {};
+        InventoryCommand() : Command("inventory", "", Elements::empty()) {};
         void process(CommandContext ctx) const throw(CommandException) override;
 
 };
