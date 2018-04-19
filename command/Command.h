@@ -2,6 +2,7 @@
 
 #include "CommandContext.h"
 #include "element/CommandElement.h"
+#include "CommandException.h"
 
 class Command {
 
@@ -11,7 +12,7 @@ class Command {
         std::string getName() const;
         std::string getUsage() const;
         const CommandElement * getElement() const;
-        virtual void process(CommandContext ctx) const = 0;
+        virtual void process(CommandContext ctx) const throw(CommandException) = 0;
 
     private:
 

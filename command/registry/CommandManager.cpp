@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 
-void CommandManager::addCommand(Command &command, std::string alias) {
+void CommandManager::addCommand(Command *command, const std::string &alias) {
     std::string str;
     std::stringstream stream(alias);
     Mapping *mapping = ROOT;
@@ -15,10 +15,10 @@ void CommandManager::addCommand(Command &command, std::string alias) {
         }
         mapping = child;
     }
-    mapping->command = &command;
+    mapping->command = command;
 }
 
-void CommandManager::addCommand(Command &command, std::vector<std::string> aliases) {
+void CommandManager::addCommand(Command *command, std::vector<std::string> aliases) {
     for (const auto &alias : aliases) {
         addCommand(command, alias);
     }

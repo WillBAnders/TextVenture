@@ -2,7 +2,11 @@
 
 #include "test/Test.h"
 
-int main()
-{
-  test();
+int main() {
+    test();
+}
+
+Game getGame() {
+    static Game game;
+    return game;
 }
