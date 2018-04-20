@@ -1,24 +1,35 @@
-# pragma once
+#pragma once
 
 class Battler {
 
     public:
 
-        Battler(int health, int energy) : health(health), energy(energy) {};
-        int getHealth() const;
-        int getMaxHealth() const;
-        int getEnergy() const;
-        int getMaxEnergy() const;
+        struct Stats {
+            int max_health;
+            int max_energy;
+            int melee_attack;
+            int ranged_attack;
+            int magic_attack;
+            int melee_defense;
+            int ranged_defense;
+            int magic_defense;
+        };
+
+        explicit Battler(Stats stats) : stats(stats), health(stats.max_health), energy(stats.max_energy) {};
+        int getHealth();
         void setHealth(int health);
-        void setEnergy (int energy);
-        void setMaxHealth (int max_health);
-        void setMaxEnergy (int max_energy);
+        int getEnergy();
+        void setEnergy(int energy);
+        const Stats getStats();
+
+    protected:
+
+        Stats &getMutableStats();
 
     private:
 
+        Stats stats;
         int health;
-        int max_health;
         int energy;
-        int max_energy;
 
 };

@@ -1,20 +1,12 @@
 #include "HealthPotion.h"
 #include "../../TextVenture.h"
 
-Player &getPlayer();
-
 void HealthPotion::use(){
-    //TODO: Set player health
-    getPlayer().setHealth(getPlayer().getHealth() + 20);
-
-    if (getPlayer().getMaxHealth() <= getPlayer().getHealth()){
-        getPlayer().setHealth(getPlayer().getMaxHealth());
-    }
-
+    getGame().getPlayer().setHealth(getGame().getPlayer().getHealth() + 20);
 }
 
 void EnergyPotion::use(){
-    getPlayer().setEnergy(static_cast<int>((getPlayer().getEnergy() * .5) + getPlayer().getEnergy()));
+    getGame().getPlayer().setEnergy(getGame().getPlayer().getEnergy() + 5);
 }
 
 void DamagePotion::use(){

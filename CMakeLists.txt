@@ -36,6 +36,9 @@ add_executable(textventure
         game/commands/SearchCommand.h game/commands/SearchCommand.cpp
         game/items/HealthPotion.h game/items/HealthPotion.cpp
         game/locations/TownSquare.h game/locations/TownSquare.cpp
+        game/moves/MagicLightAttack.h game/moves/MagicLightAttack.cpp
+        game/moves/MeleeLightAttack.h game/moves/MeleeLightAttack.cpp
+        game/moves/RangedLightAttack.h game/moves/RangedLightAttack.cpp
         game/quests/IntoTheWild.h game/quests/IntoTheWild.cpp
 
         quest/Quest.h quest/Quest.cpp

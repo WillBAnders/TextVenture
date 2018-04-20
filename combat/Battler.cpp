@@ -1,33 +1,27 @@
 #include "Battler.h"
 
-int Battler::getHealth() const {
+#include <algorithm>
+
+const Battler::Stats Battler::getStats() {
+    return stats;
+}
+
+int Battler::getHealth() {
     return health;
 }
 
-int Battler::getMaxHealth() const {
-    return max_health;
+void Battler::setHealth(int health) {
+    Battler::health = std::min(health, stats.max_health);
 }
 
-int Battler::getEnergy() const {
+int Battler::getEnergy() {
     return energy;
 }
 
-int Battler::getMaxEnergy() const {
-    return max_energy;
-}
-
-void Battler::setHealth(int health) {
-    this->health = health;
-}
-
 void Battler::setEnergy(int energy) {
-    this->energy = energy;
+    Battler::energy = std::min(energy, stats.max_energy);
 }
 
-void Battler::setMaxEnergy(int max_energy) {
-    this->max_energy = max_energy;
-}
-
-void Battler::setMaxHealth(int max_health) {
-    this->max_health = max_health;
+Battler::Stats &Battler::getMutableStats() {
+    return stats;
 }

@@ -2,23 +2,22 @@
 
 #include <string>
 #include <utility>
+#include "Battler.h"
 
 class Move {
 
-        enum Type {Attack, Status};
-
     public:
 
-        Move(Type type, std::string name, std::string description) : type(type), name(std::move(name)), description(std::move(description)) {};
-        Type getType();
+        Move(std::string name, std::string description, int energy) : name(std::move(name)), description(std::move(description)), energy(energy) {};
         std::string getName();
         std::string getDescription();
-        virtual void use() = 0; //TODO: Pass battle context
+        int getEnergy();
+        virtual void attack(Battler user, Battler target) = 0;
 
     private:
 
-        Type type;
         std::string name;
         std::string description;
+        int energy;
 
 };

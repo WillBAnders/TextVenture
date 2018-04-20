@@ -4,6 +4,7 @@
 #include "../data/entity/Player.h"
 #include "../world/World.h"
 #include "../quest/QuestManager.h"
+#include "../combat/BattleManager.h"
 
 class Game {
 
@@ -17,7 +18,7 @@ class Game {
 
     private:
 
-        Player player = Player(100, 20);
+        Player player = Player(Battler::Stats());
         World world = World();
         CommandManager commands = CommandManager();
         QuestManager quests = QuestManager();

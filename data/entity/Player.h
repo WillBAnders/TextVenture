@@ -6,11 +6,11 @@
 #include "../../world/Location.h"
 #include "../inventory/Inventory.h"
 
-class Player : Battler {
+class Player : public Battler {
 
     public:
 
-        Player(int max_health, int max_energy) : Battler(max_health, max_energy) {};
+        Player(Stats stats) : Battler(stats) {};
         Location *getLocation() const;
         void setLocation(Location *location);
         Inventory &getInventory();

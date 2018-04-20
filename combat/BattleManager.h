@@ -1,19 +1,23 @@
 # pragma once
 
+#include <map>
+#include <string>
 #include <vector>
 
 #include "Battler.h"
+#include "../data/entity/Player.h"
+#include "../command/registry/CommandManager.h"
 
 class BattleManager {
 
     public:
 
-        BattleManager(Battler player, Battler opponent) : player(player), opponent(opponent) {};
-        void start();
+        BattleManager(Player *player, CommandManager commands) : player(player), commands(commands) {};
+        void battle(std::vector<Battler *> opponents);
 
     private:
 
-        Battler player;
-        Battler opponent;
+        Player *player;
+        CommandManager commands;
 
 };
