@@ -33,24 +33,21 @@ void Quest::offer()
   std::cout << "Description:\n"
             << this->description << "\n\n";
 
+  std::cout << "Prerequisite Objectives:\n";
   // Print all the prereqs
   for (int i = 0; i < this->prereq.size(); i++)
   {
-    std::cout << i + ". " << this->prereq.at(i)->getTitle() << "\n";
+    std::cout << i+1 << ". " << this->prereq.at(i)->getTitle() << " - " << this->prereq.at(i)->getDescription() << "\n";
   }
   std::cout << "\n\n";
 
+  std::cout << "Main Objectives:\n";
   // Print all the objectives (title only)
   for (int i = 0; i < this->objectives.size(); i++)
   {
-    std::cout << i + ". " << this->objectives.at(i)->getTitle() << "\n";
+    std::cout << i+1 << ". " << this->objectives.at(i)->getTitle() << " - " << this->prereq.at(i)->getDescription() << "\n";
   }
   std::cout << "\n\n";
-}
-
-void Quest::start()
-{
-  // TODO
 }
 
 void Quest::check()

@@ -12,7 +12,6 @@ public:
   std::string getDescription() const;
 
   void offer();
-  void start();
   void check();
 
 private:

@@ -1,4 +1,15 @@
+#include "Objective.h"
 #include "CompleteObjective.h"
+
+CompleteObjective::CompleteObjective(std::string title, std::string description) : Objective()
+{
+  this->title = title;
+  this->description = description;
+}
+
+CompleteObjective::~CompleteObjective()
+{
+}
 
 std::string CompleteObjective::getTitle()
 {

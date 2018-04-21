@@ -44,10 +44,11 @@ add_executable(textventure
         quest/Quest.h quest/Quest.cpp
         quest/QuestManager.h quest/QuestManager.cpp
         quest/objective/CollectObjective.h quest/objective/CollectObjective.cpp
+        quest/objective/CompleteObjective.h quest/objective/CompleteObjective.cpp
         quest/objective/DefeatObjective.h quest/objective/DefeatObejctive.cpp
         quest/objective/InteractObjective.h quest/objective/InteractObjective.cpp
         quest/objective/MultiObjective.h quest/objective/MultiObjective.cpp
-        quest/objective/Objective.h
+        quest/objective/Objective.h quest/objective/Objective.cpp
 
         test/Test.h test/Test.cpp
 

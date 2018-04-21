@@ -17,6 +17,7 @@
 #include "../world/World.h"
 #include "../quest/Quest.h"
 #include "../quest/objective/Objective.h"
+#include "../quest/objective/CompleteObjective.h"
 #include "../game/Game.h"
 
 using namespace std;
@@ -89,7 +90,7 @@ void testWorldSystem() {
 
 void testQuestSystem() {
   // Generate Empty objective lists
-  vector<Objective*> pre = {};
+  vector<Objective*> pre = { new CompleteObjective("Test objective title", "Test objective description") };
   vector<Objective*> obs = {};
 
   // Create a main quest instance

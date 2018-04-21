@@ -1,13 +1,12 @@
 #pragma once
 
-#include "../Quest.h"
 #include "Objective.h"
 
 class CompleteObjective : public Objective
 {
 public:
-  CompleteObjective() {};
-  ~CompleteObjective() {};
+  CompleteObjective(std::string title, std::string description);
+  ~CompleteObjective();
   void check() override;
   std::string getTitle() override;
   std::string getDescription() override;
