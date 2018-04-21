@@ -8,7 +8,7 @@ class Item {
 
     public:
 
-        enum class Type{CONSUMABLE, WEAPON};
+        enum class Type{CONSUMABLE, WEAPON, ARMOR};
 
         Item(std::string name, std::string description, Type type, Stats stats) : name(std::move(name)), description(std::move(description)), stats(stats) {};
         std::string getName() const;
