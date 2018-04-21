@@ -10,11 +10,12 @@ class Game {
 
     public:
 
-        Game();
         Player &getPlayer();
         World &getWorld();
         CommandManager &getCommands();
         QuestManager &getQuests();
+        void initialize();
+        void start();
 
     private:
 
