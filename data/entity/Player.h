@@ -5,19 +5,24 @@
 #include "../../combat/Battler.h"
 #include "../../world/Location.h"
 #include "../inventory/Inventory.h"
+#include "../inventory/Equipment.h"
 
 class Player : public Battler {
 
     public:
 
-        Player(Stats stats) : Battler(stats) {};
+        explicit Player(Stats base_stats) : Battler(base_stats), base_stats(base_stats) {};
+        Inventory &getInventory();
+        Equipment &getEquipment();
         Location *getLocation() const;
         void setLocation(Location *location);
-        Inventory &getInventory();
+        void update();
 
     private:
 
-        Location *location = nullptr;
+        Stats base_stats;
         Inventory inventory = Inventory();
+        Equipment equipment = Equipment();
+        Location *location = nullptr;
 
 };

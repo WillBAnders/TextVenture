@@ -25,6 +25,9 @@ add_executable(textventure
         command/element/StringElement.h command/element/StringElement.cpp
 
         data/entity/Player.h data/entity/Player.cpp
+        data/entity/Stats.h data/entity/Stats.cpp
+        data/inventory/Consumeable.h
+        data/inventory/Equipment.h data/inventory/Equipment.cpp
         data/inventory/Inventory.h data/inventory/Inventory.cpp
         data/inventory/Item.h data/inventory/Item.cpp
 
@@ -35,6 +38,7 @@ add_executable(textventure
         game/commands/InventoryCommand.h game/commands/InventoryCommand.cpp
         game/commands/MoveCommand.h game/commands/MoveCommand.cpp
         game/commands/SearchCommand.h game/commands/SearchCommand.cpp
+        game/items/GuardsmanSet.h game/items/GuardsmanSet.cpp
         game/items/HealthPotion.h game/items/HealthPotion.cpp
         game/locations/TownSquare.h game/locations/TownSquare.cpp
         game/moves/MagicLightAttack.h game/moves/MagicLightAttack.cpp

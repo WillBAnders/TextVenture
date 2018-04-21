@@ -19,7 +19,7 @@ class Game {
 
     private:
 
-        Player player = Player(Battler::Stats());
+        Player player = Player(Stats());
         World world = World();
         CommandManager commands = CommandManager();
         QuestManager quests = QuestManager();

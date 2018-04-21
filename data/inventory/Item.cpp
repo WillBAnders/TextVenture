@@ -8,6 +8,14 @@ std::string Item::getDescription() const {
     return description;
 }
 
+Item::Type Item::getType() const {
+    return type;
+}
+
+Stats Item::getStats() const {
+    return stats;
+}
+
 int Item::getQuantity() const {
     return quantity;
 }

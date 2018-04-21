@@ -2,22 +2,28 @@
 
 #include <string>
 #include <utility>
+#include "../entity/Stats.h"
 
 class Item {
 
     public:
 
-        Item(std::string name, std::string description) : name(std::move(name)), description(std::move(description)) {};
+        enum class Type{CONSUMABLE, WEAPON};
+
+        Item(std::string name, std::string description, Type type, Stats stats) : name(std::move(name)), description(std::move(description)), stats(stats) {};
         std::string getName() const;
         std::string getDescription() const;
+        Type getType() const;
+        Stats getStats() const;
         int getQuantity() const;
         void setQuantity(int quantity);
-        virtual void use() = 0; //TODO: Pass context
 
     private:
 
         std::string name;
         std::string description;
+        Type type;
+        Stats stats;
         int quantity = 0;
 
 };

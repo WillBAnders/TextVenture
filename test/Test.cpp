@@ -17,8 +17,8 @@
 #include "../world/World.h"
 #include "../quest/Quest.h"
 #include "../quest/objective/Objective.h"
-#include "../quest/objective/CompleteObjective.h"
 #include "../game/Game.h"
+#include "../data/inventory/Consumeable.h"
 
 using namespace std;
 
@@ -56,12 +56,12 @@ void testCommandSystem() {
     }
 }
 
-class TestItem : public Item {
+class TestItem : public Item, Consumable {
 
     public:
 
-        TestItem(std::string name, std::string description) : Item(std::move(name), std::move(description)) {};
-        void use() override {
+        TestItem(std::string name, std::string description) : Item(std::move(name), std::move(description), Type::CONSUMABLE, Stats()) {};
+        void consume() override {
             setQuantity(getQuantity() - 1);
         }
 
@@ -73,7 +73,7 @@ void testDataSystem() {
     assert(inventory.getItem("Name") != nullptr);
     inventory.getItem("Name")->setQuantity(4);
     assert(inventory.getItem("Name")->getQuantity() == 4);
-    inventory.getItem("Name")->use();
+    ((Consumable *) inventory.getItem("Name"))->consume();
     assert(inventory.getItem("Name")->getQuantity() == 3);
 }
 
@@ -89,17 +89,17 @@ void testWorldSystem() {
 }
 
 void testQuestSystem() {
-  // Generate Empty objective lists
-  vector<Objective*> pre = { new CompleteObjective("Test objective title", "Test objective description") };
-  vector<Objective*> obs = {};
+    // Generate Empty objective lists
+    vector<Objective*> pre = {};
+    vector<Objective*> obs = {};
 
-  // Create a main quest instance
-  Quest *q = new Quest("Test Quest", "This is a test quest", pre, obs, false);
+    // Create a main quest instance
+    Quest *q = new Quest("Test Quest", "This is a test quest", pre, obs, false);
 
-  // Offer the quest
-  q->offer();
+    // Offer the quest
+    q->offer();
 
-  // Create a game instance and display the added quest
-  // Game g;
-  // g->getQuests().getQuest("Test").offer();
+    // Create a game instance and display the added quest
+    // Game g;
+    // g->getQuests().getQuest("Test").offer();
 }

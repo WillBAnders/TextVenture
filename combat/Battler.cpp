@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-const Battler::Stats Battler::getStats() {
+Stats Battler::getStats() {
     return stats;
 }
 
@@ -11,7 +11,7 @@ int Battler::getHealth() {
 }
 
 void Battler::setHealth(int health) {
-    Battler::health = std::min(health, stats.max_health);
+    Battler::health = std::min(health, stats.getHealth());
 }
 
 int Battler::getEnergy() {
@@ -19,9 +19,5 @@ int Battler::getEnergy() {
 }
 
 void Battler::setEnergy(int energy) {
-    Battler::energy = std::min(energy, stats.max_energy);
-}
-
-Battler::Stats &Battler::getMutableStats() {
-    return stats;
+    Battler::energy = std::min(energy, stats.getEnergy());
 }
