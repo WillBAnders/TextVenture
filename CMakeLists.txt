@@ -30,6 +30,7 @@ add_executable(textventure
 
         game/Game.h game/Game.cpp
         game/commands/Elements.h game/commands/Elements.cpp
+        game/commands/ExitCommand.h game/commands/ExitCommand.cpp
         game/commands/HelpCommand.h game/commands/HelpCommand.cpp
         game/commands/InventoryCommand.h game/commands/InventoryCommand.cpp
         game/commands/MoveCommand.h game/commands/MoveCommand.cpp

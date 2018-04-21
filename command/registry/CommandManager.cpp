@@ -38,7 +38,7 @@ void CommandManager::process(std::string input) const throw(CommandException) {
         mapping = child;
     }
     if (mapping->command == nullptr) {
-        throw CommandException("Unknown command: " + input);
+        throw CommandException("Unknown command '" + str + "'.");
     }
     while (stream >> str) {
         argument += " " + str;
@@ -48,7 +48,7 @@ void CommandManager::process(std::string input) const throw(CommandException) {
     try {
         mapping->command->getElement()->parse(args, ctx);
         if (args.hasNext()) {
-            throw ParseException("Too many arguments (" + argument + ")");
+            throw ParseException("Too many arguments.");
         }
     } catch (ParseException &e) {
         throw CommandException(mapping->command->getName(), e.what());
