@@ -19,6 +19,11 @@ Quest QuestManager::getQuest(std::string name) const
   }
 }
 
+void QuestManager::addQuest(Quest *quest)
+{
+  this->quests.insert(std::pair<std::string, Quest>(quest->getName(), *quest));
+}
+
 void QuestManager::check()
 {
   // TODO

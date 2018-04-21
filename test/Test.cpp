@@ -17,6 +17,7 @@
 #include "../world/World.h"
 #include "../quest/Quest.h"
 #include "../quest/objective/Objective.h"
+#include "../game/Game.h"
 
 using namespace std;
 
@@ -96,4 +97,8 @@ void testQuestSystem() {
 
   // Offer the quest
   q->offer();
+
+  // Create a game instance and display the added quest
+  // Game g;
+  // g->getQuests().getQuest("Test").offer();
 }

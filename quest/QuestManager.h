@@ -9,6 +9,7 @@ public:
   QuestManager();
 
   Quest getQuest(std::string name) const;
+  void addQuest(Quest *q);
   void check();
 
 private:
