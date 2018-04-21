@@ -6,6 +6,7 @@ Location *Player::getLocation() const {
 
 void Player::setLocation(Location *location) {
     Player::location = location;
+    location->onEnter();
 }
 
 Inventory &Player::getInventory() {

@@ -4,6 +4,7 @@
 
 #include "Area.h"
 #include "Compass.h"
+#include <iostream>
 
 class Location {
 
@@ -14,6 +15,7 @@ class Location {
         std::string getName() const;
         Location *getNeighbor(Compass::Direction direction) const;
         void addNeighbor(Compass::Direction direction, Location *location);
+        virtual void onEnter();
 
     private:
 

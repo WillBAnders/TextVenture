@@ -9,4 +9,6 @@ class TownSquare : public Location {
 
         TownSquare() : Location(getGame().getWorld().getArea("Mirestone Village"), "Town Square") {};
 
+        void onEnter();
+
 };

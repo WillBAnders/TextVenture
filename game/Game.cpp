@@ -28,7 +28,12 @@ QuestManager &Game::getQuests() {
 
 void Game::initialize() {
     world.addArea(new Area("Mirestone Village"));
+    world.addArea(new Area("Castle"));
+    world.addArea(new Area("Wilderness"));
     world.addLocation(new TownSquare());
+    world.addLocation(new Kitchen());
+    world.addLocation(new Market());
+    world.addLocation(new WindmooreOutpost());
     commands.addCommand(new ExitCommand(), (std::vector<std::string>) {"exit", "quit"});
     commands.addCommand(new HelpCommand(), "help");
     commands.addCommand(new MoveCommand(), (std::vector<std::string>) {"move", "go"});
