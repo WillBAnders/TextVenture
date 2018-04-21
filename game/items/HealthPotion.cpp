@@ -12,7 +12,3 @@ void EnergyPotion::use(){
 void DamagePotion::use(){
     //TODO: ATTACK DAMAGE
 }
-
-void SwordShield::use(){
-
-}
