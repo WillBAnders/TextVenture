@@ -7,7 +7,7 @@ class WindmooreOutpost : public Location {
 
     public:
 
-        WindmooreOutpost() : Location(getGame().getWorld().getArea("Wilderness"), "Windmoore Outpost") {};
+        WindmooreOutpost() : Location(getGame().getWorld().getArea("Vanguard Forest"), "Windmoore Outpost") {};
 
         void onEnter();
 

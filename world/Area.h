@@ -2,6 +2,7 @@
 
 #include <string>
 
+// Main regions of the game's world
 class Area {
 
     public:

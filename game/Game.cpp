@@ -3,6 +3,11 @@
 #include <iostream>
 
 #include "locations/TownSquare.h"
+#include "locations/WindmooreOutpost.h"
+#include "locations/Temple.h"
+#include "locations/Market.h"
+#include "locations/Kitchen.h"
+#include "locations/Kalorinian.h"
 #include "commands/MoveCommand.h"
 #include "quests/IntoTheWild.h"
 #include "items/HealthPotion.h"
@@ -28,12 +33,16 @@ QuestManager &Game::getQuests() {
 
 void Game::initialize() {
     world.addArea(new Area("Mirestone Village"));
-    world.addArea(new Area("Castle"));
-    world.addArea(new Area("Wilderness"));
+    world.addArea(new Area("Tyras Castle"));
+    world.addArea(new Area("Vanguard Forest")); // wilderness
+    world.addArea(new Area("Forest"));
+    world.addArea(new Area("Darkwood Thicket")); // forest before mountain
     world.addLocation(new TownSquare());
     world.addLocation(new Kitchen());
     world.addLocation(new Market());
     world.addLocation(new WindmooreOutpost());
+    world.addLocation(new Kalorinian());
+    world.addLocation(new Temple());
     commands.addCommand(new ExitCommand(), (std::vector<std::string>) {"exit", "quit"});
     commands.addCommand(new HelpCommand(), "help");
     commands.addCommand(new MoveCommand(), (std::vector<std::string>) {"move", "go"});

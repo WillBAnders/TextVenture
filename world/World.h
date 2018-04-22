@@ -5,6 +5,7 @@
 
 #include "Location.h"
 
+// contains all Areas and Locations
 class World {
 
     public:

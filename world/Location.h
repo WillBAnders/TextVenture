@@ -6,6 +6,7 @@
 #include "Compass.h"
 #include <iostream>
 
+// Places unique to an Area
 class Location {
 
     public:
@@ -15,7 +16,7 @@ class Location {
         std::string getName() const;
         Location *getNeighbor(Compass::Direction direction) const;
         void addNeighbor(Compass::Direction direction, Location *location);
-        virtual void onEnter();
+        virtual void onEnter(); // called when the Player enters a location
 
     private:
 

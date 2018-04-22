@@ -7,7 +7,7 @@ class Kitchen : public Location {
 
     public:
 
-        Kitchen() : Location(getGame().getWorld().getArea("Castle"), "Kitchen") {};
+        Kitchen() : Location(getGame().getWorld().getArea("Tyras Castle"), "Kitchen") {};
 
         void onEnter();
 
