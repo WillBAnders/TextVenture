@@ -11,7 +11,7 @@ class HealthPotion : public Item {
         void use();
 
 };
-
+ /*
 class EnergyPotion : public Item {
 
 public:
@@ -53,12 +53,15 @@ public:
     MeleeChestLower() : Item("Chainmail vest", "+25 Health", Type::ARMOR, Stats(25,0,0,0)) {};
 };
 
+
 class MeleeChestHigher : public Item {
 
 public:
 
     MeleeChestHigher() : Item("Gleaming Chestplate", "+75 Health", Type::ARMOR, Stats(75,0,0,0)){};
 };
+
+
 
 class MeleeHelmetLower : public Item {
 
@@ -67,12 +70,15 @@ public:
     MeleeHelmetLower() : Item("Chainmail Cowl", "+10 Health", Type::ARMOR, Stats(10,0,0,0)){};
 };
 
+
+
 class MeleeHelmetHigher : public Item {
 
 public:
 
     MeleeHelmetHigher() : Item("Dreadplate Helmet", "+25 Health", Type::ARMOR, Stats(25,0,0,0)){};
 };
+
 
 class MeleePantsLower : public Item {
 
@@ -81,12 +87,15 @@ public:
     MeleePantsLower() : Item("Chainmail Leggings", "+25 Health", Type::ARMOR, Stats(25,0,0,0)){};
 };
 
+
+
 class MeleePantsHigher : public Item {
 
 public:
 
     MeleePantsHigher() : Item("Legplates of the Protector", "+50 Health", Type::ARMOR, Stats(50,0,0,0)){};
 };
+
 
 //******* RANGED WEAPONS AND ARMOR *******
 
@@ -105,6 +114,7 @@ public:
     RangedBowsHigher() : Item("Heartseeker Bow", "+75 Attack, +20 Energy, +75 Health", Type::WEAPON, Stats(75,20,75,0)){};
 };
 
+
 class RangedChestLower : public Item {
 
 public:
@@ -112,12 +122,14 @@ public:
     RangedChestLower() : Item("Hardened Leather Tunic", "+10 Attack, +10 Health", Type::ARMOR, Stats(10,0,10,0)){};
 };
 
+
 class RangedChestHigher : public Item {
 
 public:
 
     RangedChestHigher() : Item("Dragonskin Tunic", "+30 Attack, +20 Health", Type::ARMOR, Stats(20,0,30,0)){};
 };
+
 
 class RangedHelmetLower : public Item {
 
@@ -133,6 +145,7 @@ public:
     RangedHelmetHigher() : Item("Dreadleather Helmet", "+15 Attack, +15 Health", Type::ARMOR, Stats(15,0,15,0)){};
 };
 
+
 class RangedPantsLower : public Item {
 
 public:
@@ -140,12 +153,14 @@ public:
     RangedPantsLower() : Item("Hardened Leather Chaps", "+10 Attack, +15 Health", Type::ARMOR, Stats(15,0,10,0)){};
 };
 
+
 class RangedPantsHigher : public Item {
 
 public:
 
     RangedPantsHigher() : Item("Dragonskin Chaps", "+30 Attack, +30 Health", Type::ARMOR, Stats(30,0,30,0)){};
 };
+
 
 //******* MAGE WEAPONS AND ARMOR *******
 
@@ -156,12 +171,14 @@ public:
     MageStaffBooksLower() : Item("Wooden Staff & Spellcaster’s Tomb", "+25 Attack, +10 Energy, +35 Health", Type::WEAPON, Stats(35,10,25,0)){};
 };
 
+
 class MageStaffBooksHigher : public Item {
 
 public:
 
     MageStaffBooksHigher() : Item("Infernal Greatstaff & Wildfire Orb", "+75 Attack, +20 Energy, +75 Health", Type::WEAPON, Stats(75,20,75,0)){};
 };
+
 
 class MageChestLower : public Item {
 
@@ -170,6 +187,7 @@ public:
     MageChestLower() : Item("Acolyte’s Robes", "+25 Attack", Type::ARMOR, Stats(0,0,25,0)){};
 };
 
+
 class MageChestHigher : public Item {
 
 public:
@@ -177,12 +195,14 @@ public:
     MageChestHigher() : Item("Incendiary Garb", "+50 Attack", Type::ARMOR, Stats(0,0,50,0)){};
 };
 
+
 class MageHelmetLower : public Item {
 
 public:
 
     MageHelmetLower() : Item("Acolyte’s Hood", "+15 Attack", Type::ARMOR, Stats(0,0,15,0)){};
 };
+
 
 class MageHelmetHigher : public Item {
 
@@ -204,3 +224,5 @@ public:
 
     MagePantsHigher() : Item("Incendiary Legwraps", "+45 Attack", Type::ARMOR, Stats(0,0,45,0)){};
 };
+
+  */
