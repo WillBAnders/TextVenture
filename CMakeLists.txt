@@ -41,6 +41,8 @@ add_executable(textventure
         game/items/GuardsmanSet.h game/items/GuardsmanSet.cpp
         game/items/HealthPotion.h game/items/HealthPotion.cpp
         game/locations/TownSquare.h game/locations/TownSquare.cpp
+        game/moves/FuriousStrike.h game/moves/FuriousStrike.cpp
+        game/moves/LungeAttack.h game/moves/LungeAttack.cpp
         game/moves/MagicLightAttack.h game/moves/MagicLightAttack.cpp
         game/moves/MeleeLightAttack.h game/moves/MeleeLightAttack.cpp
         game/moves/RangedLightAttack.h game/moves/RangedLightAttack.cpp
