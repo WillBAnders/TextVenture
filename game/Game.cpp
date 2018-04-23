@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "locations/TownSquare.h"
-#include "locations/WindmooreOutpost.h"
+#include "locations/WindmoreOutpost.h"
 #include "locations/Temple.h"
 #include "locations/Market.h"
 #include "locations/Kitchen.h"
@@ -40,19 +40,19 @@ void Game::initialize() {
     world.addLocation(new TownSquare());
     world.addLocation(new Kitchen());
     world.addLocation(new Market());
-    world.addLocation(new WindmooreOutpost());
+    world.addLocation(new WindmoreOutpost());
     world.addLocation(new Kalorinian());
     world.addLocation(new Temple());
     commands.addCommand(new ExitCommand(), (std::vector<std::string>) {"exit", "quit"});
     commands.addCommand(new HelpCommand(), "help");
     commands.addCommand(new MoveCommand(), (std::vector<std::string>) {"move", "go"});
     commands.addCommand(new SearchCommand(), (std::vector<std::string>) {"search", "explore"});
-    player.setLocation(world.getLocation("Town Square"));
 }
 
 void Game::start() {
     std::string input;
     print("Welcome to TextVenture!\n");
+    player.setLocation(world.getLocation("Town Square"));
     while (true) {
         getline(std::cin, input);
         try {

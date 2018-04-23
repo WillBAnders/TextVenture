@@ -32,6 +32,7 @@ add_executable(textventure
         data/inventory/Item.h data/inventory/Item.cpp
 
         game/Game.h game/Game.cpp
+        game/commands/AttackCommand.h game/commands/AttackCommand.cpp
         game/commands/Elements.h game/commands/Elements.cpp
         game/commands/ExitCommand.h game/commands/ExitCommand.cpp
         game/commands/HelpCommand.h game/commands/HelpCommand.cpp
@@ -40,7 +41,12 @@ add_executable(textventure
         game/commands/SearchCommand.h game/commands/SearchCommand.cpp
         game/items/GuardsmanSet.h game/items/GuardsmanSet.cpp
         game/items/HealthPotion.h game/items/HealthPotion.cpp
+        game/locations/Kalorinian.h game/locations/Kalorinian.cpp
+        game/locations/Kitchen.h game/locations/Kitchen.cpp
+        game/locations/Market.h game/locations/Market.cpp
+        game/locations/Temple.h game/locations/Temple.cpp
         game/locations/TownSquare.h game/locations/TownSquare.cpp
+        game/locations/WindmoreOutpost.h game/locations/WindmoreOutpost.cpp
         game/moves/FuriousStrike.h game/moves/FuriousStrike.cpp
         game/moves/LungeAttack.h game/moves/LungeAttack.cpp
         game/moves/MagicLightAttack.h game/moves/MagicLightAttack.cpp

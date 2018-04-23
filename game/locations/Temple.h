@@ -8,7 +8,6 @@ class Temple : public Location {
     public:
 
         Temple() : Location(getGame().getWorld().getArea("Mountain"), "Temple of Elders") {};
-
-        void onEnter();
+        void onEnter() override;
 
 };

@@ -8,7 +8,6 @@ class Market : public Location {
     public:
 
         Market() : Location(getGame().getWorld().getArea("Mirestone Village"), "Market") {};
-
-        void onEnter();
+        void onEnter() override;
 
 };

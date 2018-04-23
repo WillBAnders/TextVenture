@@ -19,6 +19,7 @@
 #include "../quest/objective/Objective.h"
 #include "../game/Game.h"
 #include "../data/inventory/Consumeable.h"
+#include "../TextVenture.h"
 
 using namespace std;
 
@@ -77,15 +78,27 @@ void testDataSystem() {
     assert(inventory.getItem("Name")->getQuantity() == 3);
 }
 
+class TestLocation : public Location {
+
+    public:
+
+        TestLocation(Area *area, std::string name) : Location(area, name) {};
+        void onEnter() override {
+            assert(getGame().getPlayer().getLocation() == this);
+        }
+
+};
+
 void testWorldSystem() {
     World world;
     world.addArea(new Area("Area"));
     assert(world.getArea("Area") != nullptr);
-    world.addLocation(new Location(world.getArea("Area"), "Location"));
+    world.addLocation(new TestLocation(world.getArea("Area"), "Location"));
     assert(world.getLocation("Location") != nullptr);
-    world.addLocation(new Location(world.getArea("Area"), "Neighbor"));
+    world.addLocation(new TestLocation(world.getArea("Area"), "Neighbor"));
     world.getLocation("Location")->addNeighbor(Compass::EAST, world.getLocation("Neighbor"));
     assert(world.getLocation("Location")->getNeighbor(Compass::EAST)->getName() == "Neighbor");
+    getGame().getPlayer().setLocation(world.getLocation("Location"));
 }
 
 void testQuestSystem() {

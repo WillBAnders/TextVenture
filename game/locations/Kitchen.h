@@ -8,7 +8,6 @@ class Kitchen : public Location {
     public:
 
         Kitchen() : Location(getGame().getWorld().getArea("Tyras Castle"), "Kitchen") {};
-
-        void onEnter();
+        void onEnter() override;
 
 };

@@ -16,7 +16,7 @@ class Location {
         std::string getName() const;
         Location *getNeighbor(Compass::Direction direction) const;
         void addNeighbor(Compass::Direction direction, Location *location);
-        virtual void onEnter(); // called when the Player enters a location
+        virtual void onEnter() = 0;
 
     private:
 

@@ -16,9 +16,14 @@ int Stats::getDefense() {
     return defense;
 }
 
+int Stats::getSpeed() {
+    return speed;
+}
+
 void Stats::add(Stats stats) {
     Stats::health += stats.health;
     Stats::energy += stats.energy;
     Stats::attack += stats.attack;
     Stats::defense += stats.defense;
+    Stats::speed += stats.speed;
 }

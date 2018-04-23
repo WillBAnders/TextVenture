@@ -1,5 +1,5 @@
 #include "Temple.h"
 
-void Market::onEnter() {
+void Temple::onEnter() {
     std::cout << "You have entered the Temple of Elders.";
 }

@@ -8,7 +8,6 @@ class TownSquare : public Location {
     public:
 
         TownSquare() : Location(getGame().getWorld().getArea("Mirestone Village"), "Town Square") {};
-
-        void onEnter();
+        void onEnter() override;
 
 };
