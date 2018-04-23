@@ -6,5 +6,5 @@
 #include "../../data/inventory/Inventory.h"
 
 void InventoryCommand::process(CommandContext ctx) const throw(CommandException) {
-    //TODO
+    Game::get().getPlayer().getInventory().print();
 }

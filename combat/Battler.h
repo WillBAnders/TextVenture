@@ -1,7 +1,12 @@
 #pragma once
 
+#include <string>
+#include <map>
 #include "../data/entity/Stats.h"
 
+/**
+ * Represents Entity that can participate in battle.
+ */
 class Battler {
 
     public:
@@ -12,6 +17,7 @@ class Battler {
         int getEnergy();
         void setEnergy(int energy);
         Stats getStats();
+        virtual void attack(Battler *opponent) = 0;
 
     protected:
 

@@ -3,12 +3,14 @@
 #include <exception>
 #include <string>
 
+/**
+ * An exception thrown when parsing a CommandElement.
+ */
 class ParseException : std::exception {
 
     public:
 
-        explicit ParseException(const std::string &error) : error("Error parsing arguments: " + error) {};
-        ParseException(const std::string &name, const std::string &error) : error("Error parsing argument " + name + ": " + error) {};
+        explicit ParseException(std::string error) : error(std::move(error)) {};
         const char *what() const noexcept override;
 
     private:

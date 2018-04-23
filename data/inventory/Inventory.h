@@ -3,14 +3,18 @@
 #include <map>
 
 #include "Item.h"
+#include "../Printable.h"
 
-class Inventory {
+/**
+ * The inventory for the player, which contains a map of items.
+ */
+class Inventory : public Printable {
 
     public:
 
         Item *getItem(std::string name) const;
         void addItem(Item *item);
-        //TODO: Display method for all items
+        void print() const override;
 
     private:
 

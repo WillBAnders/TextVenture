@@ -1,7 +1,5 @@
 #include "Battler.h"
 
-#include <algorithm>
-
 Stats Battler::getStats() {
     return stats;
 }
@@ -11,7 +9,7 @@ int Battler::getHealth() {
 }
 
 void Battler::setHealth(int health) {
-    Battler::health = std::min(health, stats.getHealth());
+    Battler::health = health <= 0 ? 0 : std::min(health, stats.getHealth()); //Ensures health is in range [0, max_health]
 }
 
 int Battler::getEnergy() {
@@ -19,5 +17,5 @@ int Battler::getEnergy() {
 }
 
 void Battler::setEnergy(int energy) {
-    Battler::energy = std::min(energy, stats.getEnergy());
+    Battler::energy = energy <= 0 ? 0 : std::min(energy, stats.getEnergy()); //Ensures energy is in range [0, max_health]
 }

@@ -1,13 +1,14 @@
 #pragma once
 
 #include "../../data/inventory/Item.h"
+#include "../../data/inventory/Consumeable.h"
 
-class EnergyPotion : public Item {
+class EnergyPotion : public Item, public Consumable {
 
-public:
+    public:
 
-    EnergyPotion() : Item("Energy Potion", "Regenerates 50% of max energy instantly", Type::CONSUMABLE, Stats(0,0,0,0)) {};
-    void use();
+        EnergyPotion() : Item("Energy Potion", "A vial of lightning-blue liquid said to restore your health by half of its maximum.", Type::CONSUMABLE, Stats()) {};
+        void consume() override;
 
 };
 

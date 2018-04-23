@@ -1,15 +1,18 @@
 # pragma once
 
-#include <string>
 #include <map>
+#include <string>
 
+/**
+ * A utility class for working with directions.
+ */
 class Compass {
 
     public:
 
-        enum Direction {NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
+        enum class Direction {NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
 
-        static std::map<std::string, void *> getDirections();
+        static const std::map<std::string, Direction> &getDirections();
         static std::string getName(Direction direction);
         static Direction getOpposite(Direction direction);
 

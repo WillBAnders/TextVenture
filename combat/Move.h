@@ -3,21 +3,22 @@
 #include <string>
 #include <utility>
 #include "Battler.h"
+#include "../data/Nameable.h"
+#include "../data/Describable.h"
 
-class Move {
+/**
+ * A move that can be used in battle. This currently supports 'attacks', but should be extended for status move support.
+ */
+class Move : public Nameable, public Describable {
 
     public:
 
-        Move(std::string name, std::string description, int energy) : name(std::move(name)), description(std::move(description)), energy(energy) {};
-        std::string getName();
-        std::string getDescription();
-        int getEnergy();
-        virtual void attack(Battler user, Battler target) = 0;
+        Move(std::string name, std::string description, int energy) : Nameable(std::move(name)), Describable(std::move(description)), energy(energy) {};
+        int getEnergy() const;
+        virtual void attack(Battler *user, Battler *target) = 0;
 
     private:
 
-        std::string name;
-        std::string description;
         int energy;
 
 };

@@ -3,21 +3,24 @@
 #include "CommandContext.h"
 #include "element/CommandElement.h"
 #include "CommandException.h"
+#include "../data/Describable.h"
 
-class Command {
+/**
+ * A command that can be processed. The CommandElement is responsible for parsing any input arguments and adding them
+ * into the CommandContext for the process method.
+ */
+class Command : public Nameable, public Describable {
 
     public:
 
-        Command(std::string name, std::string usage, CommandElement * element) : name(std::move(name)), usage(std::move(usage)), element(element) {};
-        std::string getName() const;
-        std::string getUsage() const;
-        const CommandElement * getElement() const;
+        Command(std::string name, std::string description, std::string usage, CommandElement *element) : Nameable(std::move(name)), Describable(std::move(description)), usage(std::move(usage)), element(element) {};
+        const std::string getUsage() const;
+        const CommandElement *getElement() const;
         virtual void process(CommandContext ctx) const throw(CommandException) = 0;
 
     private:
 
-        const std::string name;
-        const std::string usage;
-        const CommandElement * element;
+        std::string usage;
+        const CommandElement *element;
 
 };

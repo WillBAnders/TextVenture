@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * An item that is consumable.
+ */
 class Consumable {
 
     public:

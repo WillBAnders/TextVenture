@@ -1,22 +1,22 @@
 #include "Stats.h"
 
-int Stats::getHealth() {
+int Stats::getHealth() const {
     return health;
 }
 
-int Stats::getEnergy() {
+int Stats::getEnergy() const {
     return energy;
 }
 
-int Stats::getAttack() {
+int Stats::getAttack() const {
     return attack;
 }
 
-int Stats::getDefense() {
+int Stats::getDefense() const {
     return defense;
 }
 
-int Stats::getSpeed() {
+int Stats::getSpeed() const {
     return speed;
 }
 

@@ -19,6 +19,6 @@ class ParsingContext {
     private:
 
         std::vector<std::string> arguments = std::vector<std::string>();
-        int index = -1;
+        int index = -1; //The current state, representing the index of the last argument
 
 };

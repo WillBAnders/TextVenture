@@ -1,23 +1,25 @@
 #pragma once
 
 #include <vector>
+
 #include "objective/Objective.h"
+#include "../data/Nameable.h"
+#include "../data/Describable.h"
 
-class Quest
-{
-public:
-  Quest(std::string name, std::string description, std::vector<Objective*> prereq, std::vector<Objective*> objectives, bool isSideQuest);
+/**
+ * A quest containing a series of objectives that must be completed.
+ */
+class Quest : public Nameable, public Describable {
 
-  std::string getName() const;
-  std::string getDescription() const;
+    public:
 
-  void offer();
-  void check();
+        Quest(std::string name, std::string description) : Nameable(std::move(name)), Describable(std::move(description)), objectives(std::move(objectives)) {};
+        bool isComplete() const;
+        void update();
 
-private:
-  std::string name;
-  std::string description;
-  std::vector<Objective*> prereq;
-  std::vector<Objective*> objectives;
-  bool isSideQuest;
+    protected:
+
+        std::vector<Objective *> objectives = std::vector<Objective *>();
+        int progress = -1;
+
 };

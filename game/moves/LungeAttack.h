@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../../combat/Move.H"
+#include "../../combat/Move.h"
 
-class LungeAttack : Move {
+class LungeAttack : public Move {
 
     public:
 
-        LungeAttack() : Move("Lunge Attack", "A quick lunge at the target dealing damage", 0) {};
-        void attack(Battler user, Battler target) override;
+        LungeAttack() : Move("Lunge Attack", "A quick lunge at the target dealing damage", 3) {};
+        void attack(Battler *user, Battler *target) override;
 
 };

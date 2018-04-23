@@ -1,19 +1,22 @@
 # pragma once
 
-#include <string>
 #include <map>
+#include <string>
 
 #include "Location.h"
 
-// contains all Areas and Locations
+/**
+ * The world itself, containing all areas and locations.
+ */
 class World {
 
     public:
 
-        Area *getArea(std::string name) const;
-        Location *getLocation(std::string name) const;
+        Area *getArea(const std::string &name) const;
+        Location *getLocation(const std::string &name) const;
         void addArea(Area *area);
         void addLocation(Location *location);
+        void addNeighbors(Location *location, Location *neighbor, Compass::Direction direction);
 
     private:
 

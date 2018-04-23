@@ -1,14 +1,20 @@
 #pragma once
 
 #include "Objective.h"
+#include "../../data/Interactable.h"
 
-class InteractObjective : public Objective
-{
-public:
-  InteractObjective();
-  void check() override;
+/**
+ * An objective for interacting with something.
+ */
+class InteractObjective : public Objective {
 
-private:
-  std::string object; // TODO: Reimplement as Interactable type
+    public:
+
+        InteractObjective(const std::string &description, Interactable *interactable) : Objective(description), interactable(interactable) {};
+        void update() override;
+
+    private:
+
+        Interactable *interactable;
+
 };
-

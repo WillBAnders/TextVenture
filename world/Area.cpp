@@ -1,5 +1,12 @@
 #include "Area.h"
 
-std::string Area::getName() const {
-    return name;
+#include "../Util.h"
+
+Location *Area::getLocation(std::string name) const {
+    std::string lower = Util::lowercase(name);
+    return locations.count(lower) > 0 ? locations.at(lower) : nullptr;
+}
+
+const std::map<std::string, Location *> Area::getLocations() const {
+    return locations;
 }

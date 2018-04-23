@@ -1,6 +1,9 @@
 #include "MultiObjective.h"
 
-void MultiObjective::check()
-{
-  // TODO
+void MultiObjective::update() {
+    complete = true;
+    for (const auto &objective : objectives) {
+        objective->update();
+        complete |= objective->isComplete();
+    }
 }

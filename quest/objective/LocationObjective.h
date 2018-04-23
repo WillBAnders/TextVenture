@@ -5,12 +5,15 @@
 #include "Objective.h"
 #include "../../world/Location.h"
 
+/**
+ * An objective for entering a location.
+ */
 class LocationObjective : public Objective {
 
     public:
 
-        LocationObjective(std::string description, Location *location) : Objective(std::move(description)), location(location) {};
-        void check() override;
+        LocationObjective(const std::string &description, Location *location) : Objective(description), location(location) {};
+        void update();
 
     private:
 

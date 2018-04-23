@@ -1,17 +1,17 @@
 #pragma once
 
 #include "Objective.h"
-
-#include <utility>
 #include "../../data/inventory/Item.h"
 
+/**
+ * An objective for collecting items.
+ */
 class CollectObjective : public Objective {
 
     public:
 
-        CollectObjective(std::string description, Item *item, int quantity);
-        ~CollectObjective();
-        void check() override;
+        CollectObjective(const std::string &description, Item *item, int quantity) : Objective(description), item(item), quantity(quantity) {};
+        void update() override;
 
     private:
 

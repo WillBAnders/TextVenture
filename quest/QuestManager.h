@@ -1,17 +1,22 @@
 #pragma once
 
 #include <map>
+
 #include "Quest.h"
 
-class QuestManager
-{
-public:
-  QuestManager();
+/**
+ * The manager for all quests, which handles registration, retrieval, and updates.
+ */
+class QuestManager {
 
-  Quest getQuest(std::string name) const;
-  void addQuest(Quest *q);
-  void check();
+    public:
 
-private:
-  std::map<std::string, Quest> quests;
+        Quest *getQuest(const std::string &name) const;
+        void addQuest(Quest *quest);
+        void update() const;
+
+    private:
+
+        std::map<std::string, Quest *> quests;
+
 };

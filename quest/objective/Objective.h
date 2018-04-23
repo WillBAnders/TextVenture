@@ -1,16 +1,23 @@
 #pragma once
+
 #include <string>
 
-class Objective
-{
-public:
-  Objective();
-  ~Objective();
-  virtual void check() = 0;
-  virtual std::string getTitle() = 0;
-  virtual std::string getDescription() = 0;
+#include "../../data/Nameable.h"
+#include "../../data/Describable.h"
 
-protected:
-  std::string title;
-  std::string description;
+/**
+ * An objective in a quest.
+ */
+class Objective : public Describable {
+
+    public:
+
+        Objective(std::string description) : Describable(std::move(description)) {};
+        bool isComplete() const;
+        virtual void update() = 0;
+
+    protected:
+
+        bool complete = false;
+
 };

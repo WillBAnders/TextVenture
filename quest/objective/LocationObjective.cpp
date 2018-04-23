@@ -1,5 +1,7 @@
 #include "LocationObjective.h"
 
-void LocationObjective::check() {
-    //TODO: Check player location
+#include "../../game/Game.h"
+
+void LocationObjective::update() {
+    complete |= Game::get().getPlayer().getLocation() == location;
 }

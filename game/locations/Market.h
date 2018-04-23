@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../../world/Location.h"
-#include "../../TextVenture.h"
+#include "../Game.h"
 
 class Market : public Location {
 
     public:
 
-        Market() : Location(getGame().getWorld().getArea("Mirestone Village"), "Market") {};
+        Market() : Location("Market", Game::get().getWorld().getArea("Mirestone Village")) {};
         void onEnter() override;
 
 };

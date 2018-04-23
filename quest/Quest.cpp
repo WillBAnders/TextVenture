@@ -1,56 +1,18 @@
 #include <iostream>
 #include "Quest.h"
+#include "../Util.h"
 
-Quest::Quest(
-  std::string name,
-  std::string description,
-  std::vector<Objective*> prereq,
-  std::vector<Objective*> objectives,
-  bool isSideQuest)
-{
-  this->name = name;
-  this->description = description;
-  this->prereq = prereq;
-  this->objectives = objectives;
-  this->isSideQuest = isSideQuest;
+void Quest::update() {
+    for (const auto &objective : objectives) {
+        objective->update();
+        if (!objective->isComplete()) { //Current progress
+            break;
+        }
+        progress++;
+    }
+    Util::print("Quest complete: " + getName());
 }
 
-std::string Quest::getName() const
-{
-  return this->name;
-}
-
-std::string Quest::getDescription() const
-{
-  return this->description;
-}
-
-void Quest::offer()
-{
-  // Print the quest information
-  std::cout << "Title:\n"
-            << this->name << "\n\n";
-  std::cout << "Description:\n"
-            << this->description << "\n\n";
-
-  std::cout << "Prerequisite Objectives:\n";
-  // Print all the prereqs
-  for (int i = 0; i < this->prereq.size(); i++)
-  {
-    std::cout << i+1 << ". " << this->prereq.at(i)->getTitle() << " - " << this->prereq.at(i)->getDescription() << "\n";
-  }
-  std::cout << "\n\n";
-
-  std::cout << "Main Objectives:\n";
-  // Print all the objectives (title only)
-  for (int i = 0; i < this->objectives.size(); i++)
-  {
-    std::cout << i+1 << ". " << this->objectives.at(i)->getTitle() << " - " << this->prereq.at(i)->getDescription() << "\n";
-  }
-  std::cout << "\n\n";
-}
-
-void Quest::check()
-{
-  // TODO
+bool Quest::isComplete() const {
+    return progress == objectives.size();
 }

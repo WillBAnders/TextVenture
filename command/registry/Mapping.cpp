@@ -1,9 +1,8 @@
 #include "Mapping.h"
 
-#include <iostream>
-#include <algorithm>
+#include "../../Util.h"
 
 Mapping *Mapping::getChild(std::string name) const {
-    std::transform(name.begin(), name.end(), name.begin(), ::tolower);
-    return children.count(name) > 0 ? children.at(name) : nullptr;
+    std::string lower = Util::lowercase(name);
+    return children.count(lower) > 0 ? children.at(lower) : nullptr;
 }

@@ -4,6 +4,9 @@
 
 #include "CommandElement.h"
 
+/**
+ * A CommandElement that parses integers within a given range.
+ */
 class IntElement : public CommandElement {
 
     public:

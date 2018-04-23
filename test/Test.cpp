@@ -5,7 +5,6 @@
 #include <utility>
 #include <vector>
 #include "../command/element/SequentialElement.h"
-#include "../command/element/ChoicesElement.h"
 #include "../world/Compass.h"
 #include "../command/element/IntElement.h"
 #include "../command/Command.h"
@@ -19,7 +18,10 @@
 #include "../quest/objective/Objective.h"
 #include "../game/Game.h"
 #include "../data/inventory/Consumeable.h"
-#include "../TextVenture.h"
+#include "../game/commands/elements/Elements.h"
+#include "../game/commands/elements/DirectionElement.h"
+#include "../game/quests/IntoTheWild.h"
+#include "../game/quests/objectives/Objectives.h"
 
 using namespace std;
 
@@ -34,26 +36,24 @@ class TestCommand : public Command {
 
     public:
 
-        TestCommand(string name, string usage, CommandElement *element) : Command(std::move(name), std::move(usage), element) {};
+        TestCommand(string name, string description, string usage, CommandElement *element) : Command(std::move(name), std::move(description), std::move(usage), element) {};
         void process(CommandContext ctx) const throw(CommandException) override {
-            assert(ctx.hasArg("direction") && *static_cast<Compass::Direction *>(ctx.getArg("direction")) == Compass::NORTHEAST);
+            assert(ctx.hasArg("direction") && *static_cast<Compass::Direction *>(ctx.getArg("direction")) == Compass::Direction::NORTHEAST);
             assert(ctx.hasArg("distance") && *static_cast<int *>(ctx.getArg("distance")) == 3);
         }
 
 };
 
 void testCommandSystem() {
-    ChoicesElement direction("direction", Compass::getDirections());
-    IntElement distance("distance", 1, 5);
-    SequentialElement element({&direction, &distance});
-    TestCommand command("Example", "Usage", &element);
+    SequentialElement element({Elements::integer("distance", 1, 5), DirectionElement::get()});
+    TestCommand command("Example", "Description", "Usage", &element);
     CommandManager manager;
-    manager.addCommand(&command, "move");
+    manager.addCommand(&command, {"move"});
     try {
         manager.process("move northeast 3");
     } catch (CommandException &e) {
         cout << e.what() << endl;
-        assert(false);
+        assert(false); //No exception should have been thrown
     }
 }
 
@@ -82,37 +82,35 @@ class TestLocation : public Location {
 
     public:
 
-        TestLocation(Area *area, std::string name) : Location(area, name) {};
+        TestLocation(std::string name, Area *area) : Location(name, area) {};
         void onEnter() override {
-            assert(getGame().getPlayer().getLocation() == this);
+            assert(Game::get().getPlayer().getLocation() == this);
         }
 
 };
 
 void testWorldSystem() {
     World world;
-    world.addArea(new Area("Area"));
+    world.addArea(new Area("Area", "Description"));
     assert(world.getArea("Area") != nullptr);
-    world.addLocation(new TestLocation(world.getArea("Area"), "Location"));
+    world.addLocation(new TestLocation("Location", world.getArea("Area")));
     assert(world.getLocation("Location") != nullptr);
-    world.addLocation(new TestLocation(world.getArea("Area"), "Neighbor"));
-    world.getLocation("Location")->addNeighbor(Compass::EAST, world.getLocation("Neighbor"));
-    assert(world.getLocation("Location")->getNeighbor(Compass::EAST)->getName() == "Neighbor");
-    getGame().getPlayer().setLocation(world.getLocation("Location"));
+    world.addLocation(new TestLocation("Neighbor", world.getArea("Area")));
 }
 
+class TestQuest : public Quest {
+
+    public:
+
+        TestQuest(std::string name, std::string description) : Quest(std::move(name), std::move(description)) {
+            objectives.push_back(Objectives::location("Enter Location", Game::get().getWorld().getLocation("Location")));
+        }
+
+};
+
 void testQuestSystem() {
-    // Generate Empty objective lists
-    vector<Objective*> pre = {};
-    vector<Objective*> obs = {};
-
-    // Create a main quest instance
-    Quest *q = new Quest("Test Quest", "This is a test quest", pre, obs, false);
-
-    // Offer the quest
-    q->offer();
-
-    // Create a game instance and display the added quest
-    // Game g;
-    // g->getQuests().getQuest("Test").offer();
+    TestQuest quest("Quest", "Description");
+    Game::get().getPlayer().setLocation(Game::get().getWorld().getLocation("Location"));
+    quest.update();
+    assert(quest.isComplete());
 }

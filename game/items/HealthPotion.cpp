@@ -1,7 +1,8 @@
 #include "HealthPotion.h"
-#include "../../TextVenture.h"
 
-// gives +20 health to the Player
-void HealthPotion::use(){
-    getGame().getPlayer().setHealth(getGame().getPlayer().getHealth() + 20);
+#include "../Game.h"
+
+void HealthPotion::consume() {
+    Game::get().getPlayer().setHealth(Game::get().getPlayer().getHealth() + 20);
+    setQuantity(getQuantity() - 1);
 }

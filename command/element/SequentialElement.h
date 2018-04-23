@@ -2,6 +2,9 @@
 
 #include "CommandElement.h"
 
+/**
+ * A CommandElement that parses multiple elements in sequence.
+ */
 class SequentialElement : public CommandElement {
 
     public:

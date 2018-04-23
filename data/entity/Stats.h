@@ -1,18 +1,19 @@
 #pragma once
 
+/**
+ * The stats of an entity that may battle.
+ */
 class Stats {
-
-        friend class Player;
 
     public:
 
         Stats() : Stats(0, 0, 0, 0, 0) {};
         Stats(int health, int energy, int attack, int defense, int speed) : health(health), energy(energy), attack(attack), defense(defense), speed(speed) {};
-        int getHealth();
-        int getEnergy();
-        int getAttack();
-        int getDefense();
-        int getSpeed();
+        int getHealth() const;
+        int getEnergy() const;
+        int getAttack() const;
+        int getDefense() const;
+        int getSpeed() const;
         void add(Stats stats);
 
     private:
