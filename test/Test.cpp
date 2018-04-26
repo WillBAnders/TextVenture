@@ -82,7 +82,7 @@ class TestLocation : public Location {
 
     public:
 
-        TestLocation(std::string name, Area *area, int xCoordinate, int yCoordinate) : Location(name, area, xCoordinate, yCoordinate) {};
+        TestLocation(std::string name, Area *area) : Location(name, area) {};
         void onEnter() override {
             assert(Game::get().getPlayer().getLocation() == this);
         }
@@ -90,12 +90,12 @@ class TestLocation : public Location {
 };
 
 void testWorldSystem() {
-    // World world;
-    // world.addArea(new Area("Area", "Description"));
-    // assert(world.getArea("Area") != nullptr);
-    // world.addLocation(new TestLocation("Location", world.getArea("Area")));
-    // assert(world.getLocation("Location") != nullptr);
-    // world.addLocation(new TestLocation("Neighbor", world.getArea("Area")));
+    World world;
+    world.addArea(new Area("Area", "Description"));
+    assert(world.getArea("Area") != nullptr);
+    world.addLocation(new TestLocation("Location", world.getArea("Area")));
+    assert(world.getLocation("Location") != nullptr);
+    world.addLocation(new TestLocation("Neighbor", world.getArea("Area")));
 }
 
 class TestQuest : public Quest {

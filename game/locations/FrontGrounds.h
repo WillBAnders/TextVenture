@@ -7,7 +7,7 @@ class FrontGrounds : public Location {
 
     public:
 
-        FrontGrounds() : Location("Front Grounds", Game::get().getWorld().getArea("Tyras Castle"), 3, 0) {};
+        FrontGrounds() : Location("Front Grounds", Game::get().getWorld().getArea("Tyras Castle")) {};
         void onEnter() override;
 
 };

@@ -14,21 +14,6 @@ Location *World::getLocation(const std::string &name) const {
     return locations.count(lower) > 0 ? locations.at(lower) : nullptr;
 }
 
-Location *World::getLocationByCoords(int x, int y) const {
-  // Loop through each value in the locations map...
-    // If a locations coordinates match those provided, return it
-  // Return nullptr
-
-  for (auto& pair : locations) {
-    Location *location = pair.second;
-    if (location->getX() == x && location->getY() == y) {
-      return location;
-    }
-  }
-
-  return nullptr;
-}
-
 void World::addArea(Area *area) {
     areas[Util::lowercase(area->getName())] = area;
 }
