@@ -23,6 +23,7 @@ class Game {
         Battle &getBattle();
         void initialize();
         void start();
+        void startBattle(Enemy *enemy);
 
     private:
 

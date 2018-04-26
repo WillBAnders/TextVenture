@@ -49,8 +49,7 @@ void Player::update() { //Updates the players stats, moves, and so on based on p
 
 void Player::attack(Battler *opponent) { //Prompts the use to select a combat command
     while (true) {
-        std::string input;
-        getline(std::cin, input);
+        std::string input = Util::getString("\n>");
         try {
             Game::get().getBattleCommands().process(input);
             return;

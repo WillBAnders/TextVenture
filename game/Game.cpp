@@ -16,6 +16,7 @@
 #include "commands/QuestCommand.h"
 #include "quests/Quests.h"
 #include "commands/EquipCommand.h"
+#include "entities/WildBoar.h"
 
 Game &Game::get() {
     static Game game(Util::getString("Enter your name:"));
@@ -89,22 +90,27 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     Items::energyPotion()->setQuantity(2);
     player.getInventory().addItem(Items::healthPotion());
     player.getInventory().addItem(Items::energyPotion());
-    player.setLocation(Locations::tyrasSquare());
-    player.update();
 }
 
 void Game::start() { //Starts the game cycle
     initialize();
     std::string input;
-    std::cin.clear();
+    player.setLocation(Locations::tyrasSquare());
     while (true) { //Infinite loop, however the exit command escapes this
         input = Util::getString("\n>");
         try {
-            commands.process(input);
+            if (!input.empty()) {
+                commands.process(input);
+            }
             player.update();
             quests.update();
         } catch (CommandException &e) {
             Util::print(e.what());
         }
     }
+}
+
+void Game::startBattle(Enemy *enemy) {
+    battle = new Battle(&player, enemy);
+    battle->start();
 }

@@ -6,7 +6,7 @@ class LightAttack : public Move {
 
     public:
 
-        LightAttack() : Move("Light Attack", "A standard light attack", 1) {};
+        LightAttack() : Move("Light Attack", "A standard light attack", 2) {};
         void attack(Battler *user, Battler *target) override;
 
 };
