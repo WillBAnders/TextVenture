@@ -43,6 +43,7 @@ add_executable(textventure
 
         game/Game.h game/Game.cpp
         game/commands/AttackCommand.h game/commands/AttackCommand.cpp
+        game/commands/EquipCommand.h game/commands/EquipCommand.cpp
         game/commands/EquipmentCommand.h game/commands/EquipmentCommand.cpp
         game/commands/ExitCommand.h game/commands/ExitCommand.cpp
         game/commands/HelpCommand.h game/commands/HelpCommand.cpp
@@ -53,6 +54,7 @@ add_executable(textventure
         game/commands/QuestCommand.h game/commands/QuestCommand.cpp
         game/elements/DirectionElement.h game/elements/DirectionElement.cpp
         game/elements/Elements.h game/elements/Elements.cpp
+        game/elements/ItemElement.h game/elements/ItemElement.cpp
         game/elements/LocationElement.h game/elements/LocationElement.cpp
         game/elements/MoveElement.h game/elements/MoveElement.cpp
         game/elements/QuestElement.h game/elements/QuestElement.cpp

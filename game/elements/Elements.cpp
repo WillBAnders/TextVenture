@@ -31,6 +31,11 @@ MoveElement *Elements::move() {
     return move;
 }
 
+ItemElement *Elements::item() {
+    static auto *item = new ItemElement();
+    return item;
+}
+
 LocationElement *Elements::location() {
     static auto *location = new LocationElement();
     return location;

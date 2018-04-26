@@ -9,6 +9,7 @@
 #include "LocationElement.h"
 #include "MoveElement.h"
 #include "QuestElement.h"
+#include "ItemElement.h"
 
 /**
  * A series of factory methods for creating CommandElements
@@ -23,6 +24,7 @@ class Elements {
         static SequentialElement *sequential(std::vector<CommandElement *> elements);
         static SequentialElement *empty();
         static DirectionElement *direction();
+        static ItemElement *item();
         static LocationElement *location();
         static MoveElement *move();
         static QuestElement *quest();

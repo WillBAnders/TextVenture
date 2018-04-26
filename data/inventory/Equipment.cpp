@@ -18,6 +18,6 @@ void Equipment::setArmor(Item *armor) {
 }
 
 void Equipment::print() const {
-    Util::print("Weapon: " + weapon->getName(), 30);
+    Util::print("Weapon: " + (weapon != nullptr ? "" + weapon->getName() : "None"), 30);
     Util::print("Armor: " + (armor != nullptr ? "" + armor->getName() : "None"), 30);
 }

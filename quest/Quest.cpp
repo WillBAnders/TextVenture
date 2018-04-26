@@ -16,9 +16,7 @@ bool Quest::isComplete() const {
 
 void Quest::offer() {
     if (offerable) {
-        Util::print("You have been offered a quest:");
-        print();
-        if (Util::getBool("Accept the quest?")) {
+        if (Util::getBool("You have been offered the quest " + getName() + ". Accept?")) {
             Util::print("You have accepted the quest.");
         } else {
             Util::print("You have declined the quest.");
@@ -26,9 +24,9 @@ void Quest::offer() {
         }
     } else {
         Util::print("You have been given a quest:");
-        print();
     }
     progress = 0;
+    print();
     update();
 }
 

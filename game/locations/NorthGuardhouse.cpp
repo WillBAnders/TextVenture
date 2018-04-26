@@ -18,5 +18,9 @@ void NorthGuardhouse::onEnter(ChangeLocationEvent &event) {
             Util::print("Norrian: Hmm... I can give you this one, though I'll need you to bring it back when you're finished.", 50);
         }
         Game::get().getPlayer().getInventory().addItem(Items::guardsmanSet());
+        Util::print("Received item " + Items::guardsmanSet()->getName(), 50);
+        Util::print("Good luck, " + Game::get().getPlayer().getName()+ "!", 50);
+        Util::print("");
+        Quests::intoTheWild()->offer();
     }
 }

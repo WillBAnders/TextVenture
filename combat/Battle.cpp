@@ -25,6 +25,7 @@ void Battle::start() {
             Util::print("You defeated " + enemy->getName() + "!", 30);
             return;
         }
+        current->setEnergy(current->getEnergy() + 4);
         current = other;
         other = current != player ? player : (Battler *) enemy;
     }

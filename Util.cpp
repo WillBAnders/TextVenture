@@ -22,6 +22,7 @@ void Util::print(const std::string &message, long delay) {
   {
     printShort(message.substr(i, 1), delay);
   }
+  sleep(500);
   std::cout << "\n";
 }
 

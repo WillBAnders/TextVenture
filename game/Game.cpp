@@ -15,6 +15,7 @@
 #include "commands/LocationCommand.h"
 #include "commands/QuestCommand.h"
 #include "quests/Quests.h"
+#include "commands/EquipCommand.h"
 
 Game &Game::get() {
     static Game game(Util::getString("Enter your name:"));
@@ -72,6 +73,7 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     world.addNeighbors(Locations::drawbridge(), Locations::tradersPass(), Compass::Direction::SOUTH);
     world.addNeighbors(Locations::tradersPass(), Locations::clearing(), Compass::Direction::EAST);
     world.addNeighbors(Locations::tradersPass(), Locations::windmoreOutpost(), Compass::Direction::SOUTHWEST);
+    commands.addCommand(new EquipCommand(), {"equip"});
     commands.addCommand(new EquipmentCommand(), {"equipment"});
     commands.addCommand(new ExitCommand(), {"exit", "quit"});
     commands.addCommand(new HelpCommand(), {"help", "commands"});
@@ -85,11 +87,8 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     quests.addQuest(Quests::intoTheWild());
     Items::healthPotion()->setQuantity(3);
     Items::energyPotion()->setQuantity(2);
-    Items::guardsmanSet()->setQuantity(1);
     player.getInventory().addItem(Items::healthPotion());
     player.getInventory().addItem(Items::energyPotion());
-    player.getInventory().addItem(Items::guardsmanSet());
-    player.getEquipment().setWeapon(Items::guardsmanSet());
     player.setLocation(Locations::tyrasSquare());
     player.update();
 }
@@ -97,7 +96,7 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
 void Game::start() { //Starts the game cycle
     initialize();
     std::string input;
-    world.getLocation("Tyras Square");
+    std::cin.clear();
     while (true) { //Infinite loop, however the exit command escapes this
         input = Util::getString("\n>");
         try {
