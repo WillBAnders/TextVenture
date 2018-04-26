@@ -8,7 +8,7 @@ class TradersPass : public Location {
 
     public:
 
-        TradersPass() : Location("Front Grounds", Game::get().getWorld().getArea("Vanguard Forest")) {};
+        TradersPass() : Location("Front Grounds", Game::get().getWorld().getArea("Vanguard Forest"), 8, 0) {};
         void onEnter() override;
 
 };

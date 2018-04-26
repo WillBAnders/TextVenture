@@ -7,7 +7,7 @@ class WindmoreOutpost : public Location {
 
     public:
 
-        WindmoreOutpost() : Location("Windmore Outpost", Game::get().getWorld().getArea("Vanguard Forest")) {};
+        WindmoreOutpost() : Location("Windmore Outpost", Game::get().getWorld().getArea("Vanguard Forest"), 10, 0) {};
         void onEnter() override;
 
 };

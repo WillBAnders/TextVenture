@@ -7,7 +7,7 @@ class Drawbridge : public Location {
 
     public:
 
-        Drawbridge() : Location("Drawbridge", Game::get().getWorld().getArea("Mirestone Village")) {};
+        Drawbridge() : Location("Drawbridge", Game::get().getWorld().getArea("Mirestone Village"), 2, 0) {};
         void onEnter() override;
 
 };

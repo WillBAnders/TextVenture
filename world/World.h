@@ -14,6 +14,7 @@ class World {
 
         Area *getArea(const std::string &name) const;
         Location *getLocation(const std::string &name) const;
+        Location *getLocationByCoords(int x, int y) const;
         void addArea(Area *area);
         void addLocation(Location *location);
         void addNeighbors(Location *location, Location *neighbor, Compass::Direction direction);

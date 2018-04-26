@@ -6,23 +6,38 @@
 #include <iostream>
 #include <thread>
 
-void Util::print(const std::string &message) {
-    std::cout << message << std::endl;
+void Util::print(const std::string &message)
+{
+  std::cout << message << std::endl;
 }
 
-std::string Util::getString(const std::string &prompt) { //Gets a string from the commandline with a prompt
-    if (!prompt.empty()) {
-        print(prompt);
-    }
-    std::string string;
-    getline(std::cin, string);
-    return string;
+void Util::printLogo()
+{
+  std::cout << "████████╗███████╗██╗  ██╗████████╗██╗   ██╗███████╗███╗   ██╗████████╗██╗   ██╗██████╗ ███████╗" << std::endl;
+  std::cout << "╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝██║   ██║██╔════╝████╗  ██║╚══██╔══╝██║   ██║██╔══██╗██╔════╝" << std::endl;
+  std::cout << "   ██║   █████╗   ╚███╔╝    ██║   ██║   ██║█████╗  ██╔██╗ ██║   ██║   ██║   ██║██████╔╝█████╗  " << std::endl;
+  std::cout << "   ██║   ██╔══╝   ██╔██╗    ██║   ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██║   ██║██╔══██╗██╔══╝  " << std::endl;
+  std::cout << "   ██║   ███████╗██╔╝ ██╗   ██║    ╚████╔╝ ███████╗██║ ╚████║   ██║   ╚██████╔╝██║  ██║███████╗" << std::endl;
+  std::cout << "   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝     ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝" << std::endl;
+  std::cout << "" << std::endl;
 }
 
-std::string Util::lowercase(const std::string &string) { //Returns a new string that is in lowercase.
-    std::string copy = string;
-    std::transform(copy.begin(), copy.end(), copy.begin(), ::tolower);
-    return copy;
+std::string Util::getString(const std::string &prompt)
+{ //Gets a string from the commandline with a prompt
+  if (!prompt.empty())
+  {
+    print(prompt);
+  }
+  std::string string;
+  getline(std::cin, string);
+  return string;
+}
+
+std::string Util::lowercase(const std::string &string)
+{ //Returns a new string that is in lowercase.
+  std::string copy = string;
+  std::transform(copy.begin(), copy.end(), copy.begin(), ::tolower);
+  return copy;
 }
 
 // Never got this one working :(
