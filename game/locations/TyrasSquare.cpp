@@ -17,6 +17,6 @@ void TyrasSquare::onEnter(ChangeLocationEvent &event) {
 void TyrasSquare::onLeave(ChangeLocationEvent &event) {
     if (!Quests::intoTheWild()->isOffered() && event.getNextLoc() != Locations::northGuardhouse()) {
         event.setCanceled(true);
-        Util::print("Mysterious Voice: No, not that way! North, you crooked-nosed knave!");
+        Util::print("Mysterious Voice: No, not that way! North, you crooked-nosed knave!", 50);
     }
 }
