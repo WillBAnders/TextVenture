@@ -8,6 +8,5 @@ class Garden : public Location {
     public:
 
         Garden() : Location("Garden", Game::get().getWorld().getArea("Tyras Castle")) {};
-        void onEnter() override;
 
 };

@@ -10,9 +10,16 @@
 #include "../../game/Game.h"
 
 void Player::setLocation(Location *location) {
-    Player::location = location;
-    Util::print("Entering location: " + location->getName() + " (" + location->getArea()->getName() + ")");
-    location->onEnter();
+    ChangeLocationEvent event = ChangeLocationEvent(Player::location, location);
+    if (Player::location != nullptr) {
+        Player::location->onLeave(event);
+    }
+    if (!event.isCanceled()) {
+        location->onEnter(event);
+        if (!event.isCanceled()) {
+            Player::location = location;
+        }
+    }
 }
 
 Inventory &Player::getInventory() {
@@ -26,14 +33,18 @@ const std::map<std::string, Move *> &Player::getMoves() const {
 void Player::update() { //Updates the players stats, moves, and so on based on potential gear changes
     stats = Stats();
     stats.add(base_stats);
-    stats.add(getEquipment().getWeapon()->getStats());
+    moves.clear();
+    if (getEquipment().getWeapon() != nullptr) {
+        stats.add(getEquipment().getWeapon()->getStats());
+        moves["light attack"] = new LightAttack();
+        moves["lunge attack"] = new LungeAttack();
+        moves["furious strike"] = new FuriousStrike();
+    } else {
+        moves["flail"] = new LightAttack();
+    }
     if (getEquipment().getArmor() != nullptr) {
         stats.add(getEquipment().getArmor()->getStats());
     }
-    moves.clear();
-    moves["light attack"] = new LightAttack();
-    moves["lunge attack"] = new LungeAttack();
-    moves["furious strike"] = new FuriousStrike();
 }
 
 void Player::attack(Battler *opponent) { //Prompts the use to select a combat command

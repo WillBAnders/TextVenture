@@ -8,6 +8,7 @@ class TyrasSquare : public Location {
     public:
 
         TyrasSquare() : Location("Tyras Square", Game::get().getWorld().getArea("Mirestone Village")) {};
-        void onEnter() override;
+        void onEnter(ChangeLocationEvent &event) override;
+        void onLeave(ChangeLocationEvent &event) override;
 
 };

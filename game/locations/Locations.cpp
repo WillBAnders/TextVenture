@@ -35,6 +35,11 @@ Market *Locations::market() {
     return market;
 }
 
+NorthGuardhouse *Locations::northGuardhouse() {
+    static auto *northGuardhouse = new NorthGuardhouse();
+    return northGuardhouse;
+}
+
 OHartilyTavern *Locations::oHartilyTavern() {
     static auto *oHartilyTavern = new OHartilyTavern();
     return oHartilyTavern;

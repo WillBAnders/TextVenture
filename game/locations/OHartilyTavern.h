@@ -8,6 +8,5 @@ class OHartilyTavern : public Location {
     public:
 
         OHartilyTavern() : Location("O'Hartily Tavern", Game::get().getWorld().getArea("Mirestone Village")) {};
-        void onEnter() override;
 
 };

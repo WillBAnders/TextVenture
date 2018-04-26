@@ -8,6 +8,5 @@ class MainKitchen : public Location {
     public:
 
         MainKitchen() : Location("Main Kitchen", Game::get().getWorld().getArea("Tyras Castle")) {};
-        void onEnter() override;
 
 };

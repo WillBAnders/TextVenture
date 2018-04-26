@@ -12,6 +12,7 @@
 #include "TradersPass.h"
 #include "TyrasSquare.h"
 #include "WindmoreOutpost.h"
+#include "NorthGuardhouse.h"
 
 class Locations {
 
@@ -24,6 +25,7 @@ class Locations {
         static GreatHall *greatHall();
         static MainKitchen *mainKitchen();
         static Market *market();
+        static NorthGuardhouse *northGuardhouse();
         static OHartilyTavern *oHartilyTavern();
         static TradersPass *tradersPass();
         static TyrasSquare *tyrasSquare();

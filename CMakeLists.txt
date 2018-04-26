@@ -34,6 +34,8 @@ add_executable(textventure
         data/entity/NPC.h
         data/entity/Player.h data/entity/Player.cpp
         data/entity/Stats.h data/entity/Stats.cpp
+        data/event/Event.h data/event/Event.cpp
+        data/event/ChangeLocationEvent.h data/event/ChangeLocationEvent.cpp
         data/inventory/Consumeable.h
         data/inventory/Equipment.h data/inventory/Equipment.cpp
         data/inventory/Inventory.h data/inventory/Inventory.cpp
@@ -67,6 +69,7 @@ add_executable(textventure
         game/locations/Locations.h game/locations/Locations.cpp
         game/locations/MainKitchen.h game/locations/MainKitchen.cpp
         game/locations/Market.h game/locations/Market.cpp
+        game/locations/NorthGuardhouse.h game/locations/NorthGuardhouse.cpp
         game/locations/OHartilyTavern.h game/locations/OHartilyTavern.cpp
         game/locations/TradersPass.h game/locations/TradersPass.cpp
         game/locations/TyrasSquare.h game/locations/TyrasSquare.cpp

@@ -56,10 +56,12 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     world.addLocation(Locations::greatHall());
     world.addLocation(Locations::mainKitchen());
     world.addLocation(Locations::market());
+    world.addLocation(Locations::northGuardhouse());
     world.addLocation(Locations::oHartilyTavern());
     world.addLocation(Locations::tradersPass());
     world.addLocation(Locations::tyrasSquare());
     world.addLocation(Locations::windmoreOutpost());
+    world.addNeighbors(Locations::tyrasSquare(), Locations::northGuardhouse(), Compass::Direction::NORTH);
     world.addNeighbors(Locations::tyrasSquare(), Locations::frontGrounds(), Compass::Direction::EAST);
     world.addNeighbors(Locations::tyrasSquare(), Locations::drawbridge(), Compass::Direction::SOUTH);
     world.addNeighbors(Locations::tyrasSquare(), Locations::market(), Compass::Direction::WEST);

@@ -82,7 +82,7 @@ class TestLocation : public Location {
     public:
 
         TestLocation(std::string name, Area *area) : Location(name, area) {};
-        void onEnter() override {
+        void onEnter(ChangeLocationEvent &event) {
             assert(Game::get().getPlayer().getLocation() == this);
         }
 
