@@ -7,10 +7,10 @@
 void TyrasSquare::onEnter(ChangeLocationEvent &event) {
     Location::onEnter(event);
     if (!Quests::intoTheWild()->isOffered()) {
-        Util::print("Mysterious Voice: Hey kid, over here!", 1000);
-        Util::print("Mysterious Voice: North of you, in the guardhouse.", 2500);
-        Util::print("Mysterious Voice: Kid, you coming?", 4000);
-        Util::print("Mysterious Voice: Do you not know how to move or something? Enter 'move north' to go to my location.", 5000);
+        Util::print("Mysterious Voice: Hey kid, over here!", 50);
+        Util::print("Mysterious Voice: North of you, in the guardhouse.", 50);
+        Util::print("Mysterious Voice: Kid, you coming?", 50);
+        Util::print("Mysterious Voice: Do you not know how to move or something? Enter 'move north' to go to my location.", 50);
     }
 }
 

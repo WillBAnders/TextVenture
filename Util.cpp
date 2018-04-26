@@ -18,8 +18,17 @@ void Util::print(const std::string &message) { //Prints a message to console
 }
 
 void Util::print(const std::string &message, long delay) {
+  for (int i = 0; i < message.length(); i++)
+  {
+    printShort(message.substr(i, 1), delay);
+  }
+  std::cout << "\n";
+}
+
+void Util::printShort(const std::string &message, long delay) {
+    std::cout << message;
+    fflush(stdout);
     sleep(delay);
-    print(message);
 }
 
 bool Util::getBool(const std::string &prompt) { //Gets a boolean value from console

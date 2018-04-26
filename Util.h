@@ -12,6 +12,7 @@ class Util {
 
         static void sleep(long milliseconds);
         static void print(const std::string &message);
+        static void printShort(const std::string &message, long delay);
         static void print(const std::string &message, long delay);
         static bool getBool(const std::string &prompt);
         static int getInt(const std::string &prompt);
