@@ -13,6 +13,7 @@ class MultiObjective : public Objective {
 
         MultiObjective(const std::string &description, std::vector<Objective *> objectives) : Objective(description), objectives(std::move(objectives)) {};
         void update() override;
+        void print() const override;
 
     private:
 

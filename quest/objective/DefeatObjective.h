@@ -12,10 +12,12 @@ class DefeatObjective : public Objective {
 
         DefeatObjective(const std::string &description, Enemy *enemy, int quantity) : Objective(description), enemy(enemy), quantity(quantity) {};
         void update() override;
+        void print() const override;
 
     private:
 
         Enemy *enemy;
         int quantity;
+        int progress = 0;
 
 };

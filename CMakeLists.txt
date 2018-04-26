@@ -41,13 +41,19 @@ add_executable(textventure
 
         game/Game.h game/Game.cpp
         game/commands/AttackCommand.h game/commands/AttackCommand.cpp
+        game/commands/EquipmentCommand.h game/commands/EquipmentCommand.cpp
         game/commands/ExitCommand.h game/commands/ExitCommand.cpp
         game/commands/HelpCommand.h game/commands/HelpCommand.cpp
         game/commands/InventoryCommand.h game/commands/InventoryCommand.cpp
+        game/commands/ItemCommand.h game/commands/ItemCommand.cpp
+        game/commands/LocationCommand.h game/commands/LocationCommand.cpp
         game/commands/MoveCommand.h game/commands/MoveCommand.cpp
-        game/commands/elements/DirectionElement.h game/commands/elements/DirectionElement.cpp
-        game/commands/elements/Elements.h game/commands/elements/Elements.cpp
-        game/commands/elements/MoveElement.h game/commands/elements/MoveElement.cpp
+        game/commands/QuestCommand.h game/commands/QuestCommand.cpp
+        game/elements/DirectionElement.h game/elements/DirectionElement.cpp
+        game/elements/Elements.h game/elements/Elements.cpp
+        game/elements/LocationElement.h game/elements/LocationElement.cpp
+        game/elements/MoveElement.h game/elements/MoveElement.cpp
+        game/elements/QuestElement.h game/elements/QuestElement.cpp
         game/entities/WildBoar.h game/entities/WildBoar.cpp
         game/entities/VillageGuard.h game/entities/VillageGuard.cpp
         game/items/EnergyPotion.h game/items/EnergyPotion.cpp
@@ -58,6 +64,7 @@ add_executable(textventure
         game/locations/FrontGrounds.h game/locations/FrontGrounds.cpp
         game/locations/Garden.h game/locations/Garden.cpp
         game/locations/GreatHall.h game/locations/GreatHall.cpp
+        game/locations/Locations.h game/locations/Locations.cpp
         game/locations/MainKitchen.h game/locations/MainKitchen.cpp
         game/locations/Market.h game/locations/Market.cpp
         game/locations/OHartilyTavern.h game/locations/OHartilyTavern.cpp
@@ -68,6 +75,7 @@ add_executable(textventure
         game/moves/LightAttack.h game/moves/LightAttack.cpp
         game/moves/LungeAttack.h game/moves/LungeAttack.cpp
         game/quests/IntoTheWild.h game/quests/IntoTheWild.cpp
+        game/quests/Quests.h game/quests/Quests.cpp
         game/quests/objectives/Objectives.h game/quests/objectives/Objectives.cpp
 
         quest/Quest.h quest/Quest.cpp

@@ -1,14 +1,8 @@
 #include "MoveElement.h"
 
-#include "../../../command/element/StringElement.h"
-#include "Elements.h"
-#include "../../../Util.h"
-#include "../../Game.h"
-
-MoveElement *MoveElement::get() {
-    static auto *element = new MoveElement();
-    return element;
-}
+#include "../../command/element/StringElement.h"
+#include "../Game.h"
+#include "../../Util.h"
 
 void MoveElement::parse(ParsingContext &args, CommandContext &ctx) const throw(ParseException) {
     std::string name = args.next();

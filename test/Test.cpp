@@ -18,10 +18,9 @@
 #include "../quest/objective/Objective.h"
 #include "../game/Game.h"
 #include "../data/inventory/Consumeable.h"
-#include "../game/commands/elements/Elements.h"
-#include "../game/commands/elements/DirectionElement.h"
 #include "../game/quests/IntoTheWild.h"
 #include "../game/quests/objectives/Objectives.h"
+#include "../game/elements/Elements.h"
 
 using namespace std;
 
@@ -45,7 +44,7 @@ class TestCommand : public Command {
 };
 
 void testCommandSystem() {
-    SequentialElement element({Elements::integer("distance", 1, 5), DirectionElement::get()});
+    SequentialElement element({Elements::integer("distance", 1, 5), Elements::direction()});
     TestCommand command("Example", "Description", "Usage", &element);
     CommandManager manager;
     manager.addCommand(&command, {"move"});
@@ -102,7 +101,7 @@ class TestQuest : public Quest {
 
     public:
 
-        TestQuest(std::string name, std::string description) : Quest(std::move(name), std::move(description)) {
+        TestQuest(std::string name, std::string description) : Quest(std::move(name), std::move(description), false) {
             objectives.push_back(Objectives::location("Enter Location", Game::get().getWorld().getLocation("Location")));
         }
 

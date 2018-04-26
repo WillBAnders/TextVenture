@@ -12,6 +12,7 @@ class QuestObjective : public Objective {
 
         QuestObjective(std::string description, Quest *quest) : Objective(std::move(description)), quest(quest) {};
         void update() override;
+        void print() const override;
 
     private:
 

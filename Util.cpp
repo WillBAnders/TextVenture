@@ -6,16 +6,33 @@
 #include <iostream>
 #include <thread>
 
-void Util::print(const std::string &message) {
+void Util::sleep(long milliseconds) {
+    struct timespec spec{};
+    spec.tv_sec = milliseconds / 1000;
+    spec.tv_nsec = milliseconds % 1000 * 1000000;
+    nanosleep(&spec, nullptr);
+}
+
+void Util::print(const std::string &message) { //Prints a message to console
     std::cout << message << std::endl;
 }
 
-std::string Util::getString(const std::string &prompt) { //Gets a string from the commandline with a prompt
-    if (!prompt.empty()) {
-        print(prompt);
+bool Util::getBool(const std::string &prompt) {
+    std::string string = lowercase(getString(prompt));
+    if (string == "yes" || string == "y") {
+        return true;
+    } else if (string == "no" || string == "n") {
+        return false;
     }
+    print("Please enter 'yes' or 'no'.");
+    getBool(prompt);
+}
+
+std::string Util::getString(const std::string &prompt) { //Gets a string from the command line with a prompt
+    std::cout << prompt;
     std::string string;
     getline(std::cin, string);
+    std::cout << std::endl;
     return string;
 }
 

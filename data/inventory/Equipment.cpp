@@ -1,4 +1,5 @@
 #include "Equipment.h"
+#include "../../Util.h"
 
 Item *Equipment::getWeapon() const {
     return weapon;
@@ -14,4 +15,9 @@ Item *Equipment::getArmor() const {
 
 void Equipment::setArmor(Item *armor) {
     Equipment::armor = armor;
+}
+
+void Equipment::print() const {
+    Util::print("Weapon: " + weapon->getName());
+    Util::print("Armor: " + (armor != nullptr ? "" + armor->getName() : "None"));
 }

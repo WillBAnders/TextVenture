@@ -2,14 +2,13 @@
 
 #include "../../command/Command.h"
 #include "../../command/CommandException.h"
-#include "elements/Elements.h"
-#include "elements/DirectionElement.h"
+#include "../elements/Elements.h"
 
 class MoveCommand : public Command {
 
     public:
 
-        MoveCommand() : Command("Move", "Moves in a direction.", "<direction>", DirectionElement::get()) {};
+        MoveCommand() : Command("Move", "Moves in a direction.", "<direction>", Elements::direction()) {};
         void process(CommandContext ctx) const throw(CommandException) override;
 
 };

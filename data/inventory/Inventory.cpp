@@ -11,8 +11,8 @@ void Inventory::addItem(Item *item) {
     items[Util::lowercase(item->getName())] = item;
 }
 
-void Inventory::print() const { //Prints each items name, quantity, and description
+void Inventory::print() const { //Prints each item
     for (const auto &item : items) {
-        Util::print(item.second->getName() + " x" + std::to_string(item.second->getQuantity()) + ": " + item.second->getDescription());
+        item.second->print();
     }
 }

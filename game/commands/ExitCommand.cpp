@@ -3,9 +3,8 @@
 #include "../../Util.h"
 
 void ExitCommand::process(CommandContext ctx) const throw(CommandException) {
-    if (!ctx.hasArg("confirm") || ctx.getString("confirm") != "confirm") {
-        throw CommandException("Please confirm you wish to exit the game.");
+    if (Util::getBool("Do you really wish to exit the game? (yes/no):")) {
+        Util::print("Goodbye!");
+        exit(0);
     }
-    Util::print("Goodbye!");
-    exit(0);
 }

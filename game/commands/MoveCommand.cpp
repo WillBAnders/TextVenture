@@ -9,7 +9,7 @@ void MoveCommand::process(CommandContext ctx) const throw(CommandException) {
     Location *current = Game::get().getPlayer().getLocation();
     Location *neighbor = current->getNeighbor(direction);
     if (neighbor == nullptr) {
-        throw CommandException(getName(), "There is not a location in that direction.");
+        throw CommandException("There is not a location in that direction.", getUsage());
     }
     Game::get().getPlayer().setLocation(neighbor);
 }

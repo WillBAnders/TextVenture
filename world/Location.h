@@ -18,6 +18,8 @@ class Location : public Nameable {
         Area *getArea() const;
         Location *getNeighbor(Compass::Direction direction) const;
         virtual void onEnter() = 0;
+        //virtual void onLeave() = 0;
+        //virtual void onSearch() = 0;
 
     private:
 

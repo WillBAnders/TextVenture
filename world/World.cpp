@@ -22,9 +22,10 @@ void World::addLocation(Location *location) {
     std::string name = Util::lowercase(location->getName());
     locations[name] = location;
     location->getArea()->locations[name] = location;
+    getLocation(name);
 }
 
 void World::addNeighbors(Location *location, Location *neighbor, Compass::Direction direction) {
     location->neighbors[direction] = neighbor;
-    neighbor->neighbors[Compass::getOpposite(direction)] = neighbor;
+    neighbor->neighbors[Compass::getOpposite(direction)] = location;
 }

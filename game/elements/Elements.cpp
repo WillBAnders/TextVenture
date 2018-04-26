@@ -1,7 +1,5 @@
 #include "Elements.h"
 
-#include "../../../world/Compass.h"
-
 StringElement *Elements::string(std::string name, bool remaining) {
     return new StringElement(std::move(name), remaining);
 }
@@ -19,6 +17,26 @@ SequentialElement *Elements::sequential(std::vector<CommandElement *> elements) 
 }
 
 SequentialElement *Elements::empty() {
-    static SequentialElement *empty = sequential({});
+    static auto *empty = sequential({});
     return empty;
+}
+
+DirectionElement *Elements::direction() {
+    static auto *direction = new DirectionElement();
+    return direction;
+}
+
+MoveElement *Elements::move() {
+    static auto *move = new MoveElement();
+    return move;
+}
+
+LocationElement *Elements::location() {
+    static auto *location = new LocationElement();
+    return location;
+}
+
+QuestElement *Elements::quest() {
+    static auto *quest = new QuestElement();
+    return quest;
 }

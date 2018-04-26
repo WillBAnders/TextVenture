@@ -7,3 +7,9 @@ void MultiObjective::update() {
         complete |= objective->isComplete();
     }
 }
+
+void MultiObjective::print() const {
+    for (const auto &objective : objectives) {
+        objective->print();
+    }
+}

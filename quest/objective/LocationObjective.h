@@ -14,6 +14,7 @@ class LocationObjective : public Objective {
 
         LocationObjective(const std::string &description, Location *location) : Objective(description), location(location) {};
         void update();
+        void print() const override;
 
     private:
 

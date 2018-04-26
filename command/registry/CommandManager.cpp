@@ -61,7 +61,7 @@ void CommandManager::print() const {
 
 void CommandManager::print(Mapping *mapping, const std::string &indent) const {
     for (const auto &child : mapping->children) {
-        Util::print(child.first + " " + (child.second->command != nullptr ? child.second->command->getUsage() + " (" + child.second->command->getName() + ")" : ""));
+        Util::print(child.first + " " + (child.second->command != nullptr ? ((child.second->command->getUsage().empty() ? "" : child.second->command->getUsage() + " ") + "(" + child.second->command->getName() + ")") : ""));
         print(child.second, indent + "| "); //Adds indentation for child commands
     }
 }

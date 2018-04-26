@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../command/Command.h"
-#include "elements/Elements.h"
+#include "../elements/Elements.h"
 
 class InventoryCommand : public Command {
 

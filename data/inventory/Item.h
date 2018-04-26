@@ -5,11 +5,12 @@
 #include "../entity/Stats.h"
 #include "../Nameable.h"
 #include "../Describable.h"
+#include "../Printable.h"
 
 /**
  * An item in the game. Note that some items (such as weapons), are not consumable (see Consumable.h)
  */
-class Item : public Nameable, public Describable {
+class Item : public Nameable, public Describable, public Printable {
 
     public:
 
@@ -20,6 +21,7 @@ class Item : public Nameable, public Describable {
         Stats getStats() const;
         int getQuantity() const;
         void setQuantity(int quantity);
+        void print() const override;
 
     private:
 

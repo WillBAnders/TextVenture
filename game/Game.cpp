@@ -2,29 +2,22 @@
 
 #include <iostream>
 
-#include "locations/TyrasSquare.h"
-#include "locations/WindmoreOutpost.h"
-#include "locations/Market.h"
-#include "locations/MainKitchen.h"
-#include "commands/MoveCommand.h"
-#include "quests/IntoTheWild.h"
-#include "items/HealthPotion.h"
-#include "commands/HelpCommand.h"
 #include "commands/ExitCommand.h"
-#include "commands/AttackCommand.h"
-#include "../Util.h"
-#include "entities/WildBoar.h"
-#include "locations/FrontGrounds.h"
-#include "locations/Garden.h"
-#include "locations/GreatHall.h"
-#include "locations/OHartilyTavern.h"
+#include "commands/HelpCommand.h"
 #include "items/Items.h"
-#include "locations/Clearing.h"
-#include "locations/Drawbridge.h"
+#include "locations/Locations.h"
+#include "../Util.h"
 #include "commands/InventoryCommand.h"
+#include "commands/MoveCommand.h"
+#include "commands/AttackCommand.h"
+#include "commands/EquipmentCommand.h"
+#include "commands/ItemCommand.h"
+#include "commands/LocationCommand.h"
+#include "commands/QuestCommand.h"
+#include "quests/Quests.h"
 
 Game &Game::get() {
-    static Game game(Util::getString("Enter your name"));
+    static Game game(Util::getString("Enter your name:"));
     return game;
 }
 
@@ -56,28 +49,38 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     world.addArea(new Area("Mirestone Village", "An ancient village created by Elder Gods long ago."));
     world.addArea(new Area("Tyras Castle", "The castle of King Tyras, a cruel and ruthless ruler."));
     world.addArea(new Area("Vanguard Forest", "A forest south of Mirestone home to many plants, animals, and travelers."));
-    world.addLocation(new Clearing());
-    world.addLocation(new Drawbridge());
-    world.addLocation(new FrontGrounds());
-    world.addLocation(new Garden());
-    world.addLocation(new GreatHall());
-    world.addLocation(new MainKitchen());
-    world.addLocation(new Market());
-    world.addLocation(new OHartilyTavern());
-    world.addLocation(new TyrasSquare());
-    world.addLocation(new WindmoreOutpost());
-    world.addNeighbors(world.getLocation("Front Grounds"), world.getLocation("Garden"), Compass::Direction::SOUTHEAST);
-    world.addNeighbors(world.getLocation("Front Grounds"), world.getLocation("Great Hall"), Compass::Direction::NORTH);
-    world.addNeighbors(world.getLocation("Great Hall"), world.getLocation("Main Kitchen"), Compass::Direction::WEST);
-    world.addNeighbors(world.getLocation("Market"), world.getLocation("Tyras Square"), Compass::Direction::EAST);
-    world.addNeighbors(world.getLocation("Market"), world.getLocation("O'Hartily Tavern"), Compass::Direction::NORTHWEST);
-    world.addNeighbors(world.getLocation("Tyras Square"), world.getLocation("Windmore Outpost"), Compass::Direction::SOUTH);
+    world.addLocation(Locations::clearing());
+    world.addLocation(Locations::drawbridge());
+    world.addLocation(Locations::frontGrounds());
+    world.addLocation(Locations::garden());
+    world.addLocation(Locations::greatHall());
+    world.addLocation(Locations::mainKitchen());
+    world.addLocation(Locations::market());
+    world.addLocation(Locations::oHartilyTavern());
+    world.addLocation(Locations::tradersPass());
+    world.addLocation(Locations::tyrasSquare());
+    world.addLocation(Locations::windmoreOutpost());
+    world.addNeighbors(Locations::tyrasSquare(), Locations::frontGrounds(), Compass::Direction::EAST);
+    world.addNeighbors(Locations::tyrasSquare(), Locations::drawbridge(), Compass::Direction::SOUTH);
+    world.addNeighbors(Locations::tyrasSquare(), Locations::market(), Compass::Direction::WEST);
+    world.addNeighbors(Locations::market(), Locations::oHartilyTavern(), Compass::Direction::NORTHWEST);
+    world.addNeighbors(Locations::frontGrounds(), Locations::greatHall(), Compass::Direction::NORTH);
+    world.addNeighbors(Locations::frontGrounds(), Locations::garden(), Compass::Direction::SOUTHEAST);
+    world.addNeighbors(Locations::greatHall(), Locations::mainKitchen(), Compass::Direction::WEST);
+    world.addNeighbors(Locations::drawbridge(), Locations::tradersPass(), Compass::Direction::SOUTH);
+    world.addNeighbors(Locations::tradersPass(), Locations::clearing(), Compass::Direction::EAST);
+    world.addNeighbors(Locations::tradersPass(), Locations::windmoreOutpost(), Compass::Direction::SOUTHWEST);
+    commands.addCommand(new EquipmentCommand(), {"equipment"});
     commands.addCommand(new ExitCommand(), {"exit", "quit"});
     commands.addCommand(new HelpCommand(), {"help", "commands"});
     commands.addCommand(new InventoryCommand(), {"inventory", "inv"});
-    commands.addCommand(new MoveCommand(), {"move", "go"});
+    commands.addCommand(new ItemCommand(), {"item"});
+    commands.addCommand(new LocationCommand(), {"location"});
+    commands.addCommand(new MoveCommand(), {"move", "go", "travel"});
+    commands.addCommand(new QuestCommand(), {"quest"});
     battle_commands.addCommand(new AttackCommand(), {"attack", "use"});
     battle_commands.addCommand(new ExitCommand(), {"exit", "quit"});
+    quests.addQuest(Quests::intoTheWild());
     Items::healthPotion()->setQuantity(3);
     Items::energyPotion()->setQuantity(2);
     Items::guardsmanSet()->setQuantity(1);
@@ -85,18 +88,20 @@ void Game::initialize() { //Initializes areas, locations, commands, items, and t
     player.getInventory().addItem(Items::energyPotion());
     player.getInventory().addItem(Items::guardsmanSet());
     player.getEquipment().setWeapon(Items::guardsmanSet());
-    player.setLocation(world.getLocation("Tyras Square"));
+    player.setLocation(Locations::tyrasSquare());
     player.update();
 }
 
 void Game::start() { //Starts the game cycle
-    std::string input;
-    Util::print("Welcome, " + player.getName() + ", to TextVenture!\n");
     initialize();
+    std::string input;
+    world.getLocation("Tyras Square");
     while (true) { //Infinite loop, however the exit command escapes this
-        getline(std::cin, input);
+        input = Util::getString("\n>");
         try {
             commands.process(input);
+            player.update();
+            quests.update();
         } catch (CommandException &e) {
             Util::print(e.what());
         }

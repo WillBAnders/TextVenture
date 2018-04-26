@@ -3,11 +3,11 @@
 #include "../../command/Command.h"
 #include "../elements/Elements.h"
 
-class HelpCommand : public Command {
+class EquipmentCommand : public Command {
 
     public:
 
-        HelpCommand() : Command("Help", "Shows the available commands.", "", Elements::empty()) {};
+        EquipmentCommand() : Command("Equipment", "Displays information about your equipment ", "", Elements::empty()) {};
         void process(CommandContext ctx) const throw(CommandException) override;
 
 };

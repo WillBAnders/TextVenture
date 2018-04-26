@@ -12,6 +12,7 @@ class InteractObjective : public Objective {
 
         InteractObjective(const std::string &description, Interactable *interactable) : Objective(description), interactable(interactable) {};
         void update() override;
+        void print() const override;
 
     private:
 
