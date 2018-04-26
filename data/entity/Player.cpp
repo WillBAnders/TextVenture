@@ -48,17 +48,3 @@ void Player::attack(Battler *opponent) { //Prompts the use to select a combat co
         }
     }
 }
-
-void Player::showMap() {
-
-    Location *curr = Player::location;
-    Location *n = curr->getNeighbor(Compass::Direction::NORTH);
-    Location *e = curr->getNeighbor(Compass::Direction::EAST);
-    Location *s = curr->getNeighbor(Compass::Direction::SOUTH);
-    Location *w = curr->getNeighbor(Compass::Direction::WEST);
-
-    std::cout << "North: " << n->getName() << " (" << n->getArea() << ")";
-    std::cout << "East: " << e->getName() << " (" << e->getArea() << ")";
-    std::cout << "South: " << s->getName() << " (" << s->getArea() << ")";
-    std::cout << "West: " << w->getName() << " (" << w->getArea() << ")";
-}

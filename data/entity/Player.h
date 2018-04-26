@@ -23,7 +23,6 @@ class Player : public Entity, public Battler {
         void setLocation(Location *location);
         void attack(Battler *opponent) override;
         void update();
-        void showMap();
 
     private:
 
